@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,15 +53,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+				// Temporun custom colors
+				neon: {
+					blue: '#00D4FF',
+					purple: '#8B5CF6',
+					pink: '#F472B6',
+					orange: '#FB923C'
+				},
+				dark: {
+					primary: '#0A0A0A',
+					secondary: '#1A1A1A',
+					tertiary: '#2A2A2A'
 				}
 			},
 			borderRadius: {
@@ -84,11 +87,37 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'scan': {
+					'0%': { transform: 'translateY(-100%)' },
+					'100%': { transform: 'translateY(100vh)' }
+				},
+				'pulse-neon': {
+					'0%, 100%': { boxShadow: '0 0 5px #00D4FF, 0 0 20px #00D4FF, 0 0 35px #00D4FF' },
+					'50%': { boxShadow: '0 0 10px #00D4FF, 0 0 40px #00D4FF, 0 0 60px #00D4FF' }
+				},
+				'gradient-shift': {
+					'0%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+					'100%': { backgroundPosition: '0% 50%' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'scan': 'scan 2s ease-in-out infinite',
+				'pulse-neon': 'pulse-neon 2s ease-in-out infinite',
+				'gradient-shift': 'gradient-shift 3s ease infinite',
+				'float': 'float 3s ease-in-out infinite'
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+				'neon-gradient': 'linear-gradient(45deg, #00D4FF, #8B5CF6, #F472B6, #FB923C)'
 			}
 		}
 	},

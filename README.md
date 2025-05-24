@@ -1,73 +1,146 @@
-# Welcome to your Lovable project
 
-## Project info
+# Temporun - nFactorial AI Cup 2025
 
-**URL**: https://lovable.dev/projects/03732831-3ae4-4fa9-8652-7c49965118ac
+## 🏃‍♂️ Project Overview
 
-## How can I edit this code?
+**Temporun** is a cutting-edge multimodal AI agent designed for runners, combining computer vision, biomechanics analysis, and personalized coaching to optimize running performance and shoe selection.
 
-There are several ways of editing your application.
+## 🎯 Problem Statement
 
-**Use Lovable**
+Runners often struggle with:
+- Poor running posture leading to injuries
+- Choosing inappropriate footwear for their biomechanics
+- Lack of personalized coaching guidance
+- Limited access to professional gait analysis
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/03732831-3ae4-4fa9-8652-7c49965118ac) and start prompting.
+**Target Audience**: B2C - Recreational and competitive runners seeking performance optimization and injury prevention.
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🔬 Multimodal AI Architecture
 
-**Use your preferred IDE**
+### Modalities Implemented:
+1. **Computer Vision (Image)**: 
+   - Side-profile posture analysis
+   - Top-down foot structure assessment
+   - Real-time biomechanics evaluation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+2. **Natural Language Processing (Text)**:
+   - Conversational AI coaching
+   - Personalized shoe recommendations
+   - Training advice and injury prevention tips
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+3. **Data Analytics**:
+   - Foot type classification
+   - Gait pattern recognition
+   - Performance metrics tracking
 
-Follow these steps:
+## 🤖 Agent Recipes Implementation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### From https://agentrecipes.com:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. **Multi-Modal Fusion Agent**:
+   - Combines visual analysis with conversational AI
+   - Processes image data and text simultaneously
+   - Creates unified user profiles from diverse inputs
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. **Recommendation Engine Agent**:
+   - Uses collaborative filtering principles
+   - Matches user biomechanics to shoe databases
+   - Provides explainable AI recommendations
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+3. **Coaching Conversation Agent**:
+   - Maintains context across chat sessions
+   - Adapts responses based on analysis results
+   - Provides personalized training guidance
+
+## 🛡️ Anthropic Principles Applied
+
+### Helpful:
+- Provides actionable insights for injury prevention
+- Offers specific, tailored shoe recommendations
+- Guides users through proper analysis techniques
+- Maintains encouraging, supportive coaching tone
+
+### Honest:
+- Clearly explains analysis limitations
+- Provides confidence scores for recommendations
+- Acknowledges when professional consultation is needed
+- Transparent about AI vs. human expertise boundaries
+
+### Harmless:
+- Includes disclaimers about medical advice
+- Encourages gradual training progression
+- Warns about potential injury risks
+- Promotes safe running practices
+
+## 🏗️ Technical Architecture
+
+```
+Temporun/
+├── frontend/              # React app with modern UI
+│   ├── screens/          # Main app screens
+│   ├── components/       # Reusable UI components
+│   └── utils/           # Helper functions
+├── backend/              # FastAPI server (to be implemented)
+│   ├── vision/          # Image processing models
+│   ├── nlp/             # Conversation handling
+│   └── recommendations/ # Shoe matching logic
+├── models/               # AI model implementations
+│   ├── posture_analysis/ # Computer vision models
+│   └── foot_classification/ # Foot type detection
+└── assets/              # Test data and resources
 ```
 
-**Edit a file directly in GitHub**
+## 🎨 UI/UX Design Philosophy
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- **Futuristic aesthetic** with neon gradients and neumorphic elements
+- **Dark theme** optimized for athletic/technical feel
+- **Micro-interactions** that provide feedback during AI processing
+- **Progressive disclosure** guiding users through complex analysis
+- **Accessibility-first** design for diverse user needs
 
-**Use GitHub Codespaces**
+## 🚀 Deployment Strategy
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Frontend (Vercel):
+- Static React build deployment
+- Environment-based configuration
+- Progressive Web App (PWA) capabilities
+- Mobile-responsive design
 
-## What technologies are used for this project?
+### Backend (Render):
+- FastAPI server with ML model serving
+- Containerized deployment
+- Auto-scaling based on usage
+- Database integration for user profiles
 
-This project is built with:
+## 📱 Key Features
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. **Onboarding Flow**: Personalized user profiling
+2. **Posture Analysis**: AI-powered running stance evaluation
+3. **Foot Assessment**: Biomechanical foot type detection
+4. **Shoe Recommendations**: Personalized footwear matching
+5. **AI Coach Chat**: Conversational training guidance
+6. **Progress Tracking**: Analysis history and improvements
 
-## How can I deploy this project?
+## 🔮 Future Enhancements
 
-Simply open [Lovable](https://lovable.dev/projects/03732831-3ae4-4fa9-8652-7c49965118ac) and click on Share -> Publish.
+- Integration with wearable devices
+- Video gait analysis
+- Community features and challenges
+- Professional coach network
+- Advanced injury prediction models
 
-## Can I connect a custom domain to my Lovable project?
+## 🏆 Competition Submission
 
-Yes, you can!
+- **Submission Date**: May 25th, 2025, 10:00 AM
+- **Team**: Solo development project
+- **Category**: B2C Multimodal AI Agent
+- **Innovation**: First-of-its-kind running-specific AI coach
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+*Built with React, TypeScript, Tailwind CSS, and FastAPI*
+*Powered by Computer Vision and Natural Language Processing*
+
+## 📄 License
+
+MIT License - Open source for educational and research purposes.
