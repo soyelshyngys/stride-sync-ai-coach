@@ -44,84 +44,105 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
 
   if (step === 'guide') {
     return (
-      <div className="min-h-screen flex flex-col p-6">
-        <div className="flex items-center mb-8">
-          <button onClick={onBack} className="p-2 rounded-xl neumorphic mr-4">
+      <div className="min-h-screen bg-black">
+        {/* Header */}
+        <div className="flex items-center p-8 border-b border-white/10">
+          <button onClick={onBack} className="p-3 hover:bg-white/5 rounded-xl transition-colors mr-4">
             <ArrowLeft size={24} className="text-white" />
           </button>
-          <h1 className="text-2xl font-bold text-white">Posture Analysis</h1>
+          <h1 className="text-2xl font-bold text-white tracking-widest uppercase">POSTURE ANALYSIS</h1>
         </div>
 
-        <div className="flex-1 space-y-8">
-          <div className="text-center space-y-4">
-            <div className="neumorphic p-8 rounded-3xl">
-              <Camera size={64} className="text-neon-blue mx-auto mb-4" />
-              <h2 className="text-xl font-semibold text-white mb-2">Side Profile Photo</h2>
-              <p className="text-gray-400">We'll analyze your running posture from a side view</p>
+        <div className="p-8 space-y-12">
+          {/* Main Guide Section */}
+          <div className="text-center">
+            <div className="card-minimal p-12 rounded-3xl">
+              <Camera size={72} className="text-cream mx-auto mb-8" />
+              <h2 className="text-4xl font-black text-white mb-6 tracking-tight uppercase">
+                SIDE PROFILE PHOTO
+              </h2>
+              <p className="text-white/60 text-lg font-medium tracking-wider uppercase">
+                AI analysis of your running posture
+              </p>
             </div>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Photo Guidelines:</h3>
-            <div className="space-y-3">
+          {/* Guidelines */}
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-white tracking-widest uppercase text-center">
+              PHOTO GUIDELINES
+            </h3>
+            <div className="space-y-4">
               {[
                 { icon: '📱', text: 'Hold phone horizontally (landscape mode)' },
                 { icon: '👤', text: 'Stand in running position from the side' },
                 { icon: '💡', text: 'Ensure good lighting and clear background' },
                 { icon: '📏', text: 'Full body should be visible in frame' }
               ].map((guideline, index) => (
-                <div key={index} className="flex items-center space-x-3 neumorphic p-4 rounded-xl">
-                  <span className="text-2xl">{guideline.icon}</span>
-                  <span className="text-gray-300">{guideline.text}</span>
+                <div key={index} className="card-minimal p-6 rounded-2xl">
+                  <div className="flex items-center space-x-4">
+                    <span className="text-3xl">{guideline.icon}</span>
+                    <span className="text-white font-medium tracking-wider uppercase text-lg">
+                      {guideline.text}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
 
-        <button
-          onClick={() => setStep('capture')}
-          className="w-full p-4 rounded-2xl bg-neon-gradient text-white font-semibold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
-        >
-          Ready to Capture
-        </button>
+          {/* Continue Button */}
+          <button
+            onClick={() => setStep('capture')}
+            className="w-full btn-primary text-xl py-6"
+          >
+            READY TO CAPTURE
+          </button>
+        </div>
       </div>
     );
   }
 
   if (step === 'capture') {
     return (
-      <div className="min-h-screen flex flex-col p-6">
-        <div className="flex items-center mb-8">
-          <button onClick={() => setStep('guide')} className="p-2 rounded-xl neumorphic mr-4">
+      <div className="min-h-screen bg-black">
+        {/* Header */}
+        <div className="flex items-center p-8 border-b border-white/10">
+          <button onClick={() => setStep('guide')} className="p-3 hover:bg-white/5 rounded-xl transition-colors mr-4">
             <ArrowLeft size={24} className="text-white" />
           </button>
-          <h1 className="text-2xl font-bold text-white">Capture Photo</h1>
+          <h1 className="text-2xl font-bold text-white tracking-widest uppercase">CAPTURE PHOTO</h1>
         </div>
 
-        <div className="flex-1 flex flex-col justify-center space-y-8">
-          <div className="neumorphic rounded-3xl p-8 text-center">
-            <div className="border-4 border-dashed border-neon-blue/30 rounded-2xl p-12 relative overflow-hidden">
-              <div className="absolute inset-0 bg-neon-blue/5 animate-pulse" />
-              <Camera size={64} className="text-neon-blue mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-2">Position Yourself</h3>
-              <p className="text-gray-400 mb-6">Stand sideways in running stance</p>
-              
-              {/* Scanning animation overlay */}
-              <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute w-full h-0.5 bg-neon-blue/50 animate-scan" />
+        <div className="p-8 flex flex-col justify-center min-h-[calc(100vh-100px)]">
+          <div className="space-y-12">
+            {/* Capture Area */}
+            <div className="card-minimal rounded-3xl p-12">
+              <div className="border-4 border-dashed border-cream/30 rounded-3xl p-16 relative overflow-hidden text-center">
+                <div className="absolute inset-0 bg-cream/5 animate-pulse" />
+                <Camera size={96} className="text-cream mx-auto mb-8" />
+                <h3 className="text-3xl font-black text-white mb-4 tracking-tight uppercase">
+                  POSITION YOURSELF
+                </h3>
+                <p className="text-white/60 text-lg font-medium tracking-wider uppercase">
+                  Stand sideways in running stance
+                </p>
+                
+                {/* Scanning animation overlay */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute w-full h-0.5 bg-cream/50 animate-pulse" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="space-y-4">
+            {/* Upload Button */}
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="w-full p-4 rounded-2xl bg-neon-gradient text-white font-semibold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              className="w-full btn-primary text-xl py-6"
             >
-              <div className="flex items-center justify-center space-x-2">
-                <Upload size={20} />
-                <span>Upload Photo</span>
+              <div className="flex items-center justify-center space-x-3">
+                <Upload size={24} />
+                <span>UPLOAD PHOTO</span>
               </div>
             </button>
             
@@ -140,38 +161,52 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
 
   if (step === 'analyzing') {
     return (
-      <div className="min-h-screen flex flex-col justify-center items-center p-6">
-        <div className="text-center space-y-8">
+      <div className="min-h-screen bg-black flex flex-col justify-center items-center p-8">
+        <div className="text-center space-y-12 max-w-md">
+          {/* Image Preview */}
           <div className="relative">
             {imagePreview && (
-              <img 
-                src={imagePreview} 
-                alt="Analyzing" 
-                className="w-64 h-64 object-cover rounded-2xl neumorphic"
-              />
-            )}
-            <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/80 to-transparent rounded-2xl" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="neumorphic p-4 rounded-full animate-pulse-neon">
-                <Scan size={32} className="text-neon-blue animate-spin" />
+              <div className="relative">
+                <img 
+                  src={imagePreview} 
+                  alt="Analyzing" 
+                  className="w-80 h-80 object-cover rounded-3xl border border-white/10"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent rounded-3xl" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="card-minimal p-6 rounded-full">
+                    <Scan size={40} className="text-cream animate-spin" />
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
           
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-white">Analyzing Posture</h2>
-            <p className="text-gray-400">Our AI is examining your running stance...</p>
+          {/* Analysis Status */}
+          <div className="space-y-8">
+            <div className="text-center">
+              <h2 className="text-4xl font-black text-white mb-4 tracking-tight uppercase">
+                ANALYZING POSTURE
+              </h2>
+              <p className="text-white/60 text-lg font-medium tracking-wider uppercase">
+                AI examining your running stance
+              </p>
+            </div>
             
-            <div className="space-y-2">
+            <div className="space-y-4">
               {[
                 'Detecting body landmarks',
                 'Measuring joint angles',
                 'Analyzing alignment',
                 'Generating recommendations'
               ].map((step, index) => (
-                <div key={index} className="flex items-center space-x-3 neumorphic p-3 rounded-xl">
-                  <div className="w-2 h-2 bg-neon-blue rounded-full animate-pulse" />
-                  <span className="text-gray-300">{step}</span>
+                <div key={index} className="card-minimal p-4 rounded-xl">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-3 h-3 bg-cream rounded-full animate-pulse" />
+                    <span className="text-white font-medium tracking-wider uppercase">
+                      {step}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -183,57 +218,66 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
 
   if (step === 'results' && analysis) {
     return (
-      <div className="min-h-screen flex flex-col p-6">
-        <div className="flex items-center mb-8">
-          <button onClick={() => setStep('capture')} className="p-2 rounded-xl neumorphic mr-4">
+      <div className="min-h-screen bg-black">
+        {/* Header */}
+        <div className="flex items-center p-8 border-b border-white/10">
+          <button onClick={() => setStep('capture')} className="p-3 hover:bg-white/5 rounded-xl transition-colors mr-4">
             <ArrowLeft size={24} className="text-white" />
           </button>
-          <h1 className="text-2xl font-bold text-white">Analysis Results</h1>
+          <h1 className="text-2xl font-bold text-white tracking-widest uppercase">ANALYSIS RESULTS</h1>
         </div>
 
-        <div className="flex-1 space-y-6">
+        <div className="p-8 space-y-12">
           {/* Overall Score */}
-          <div className="neumorphic p-6 rounded-2xl text-center">
-            <div className="relative w-32 h-32 mx-auto mb-4">
-              <svg className="w-32 h-32 transform -rotate-90">
+          <div className="card-minimal p-12 rounded-3xl text-center">
+            <div className="relative w-40 h-40 mx-auto mb-8">
+              <svg className="w-40 h-40 transform -rotate-90">
                 <circle
-                  cx="64"
-                  cy="64"
-                  r="56"
+                  cx="80"
+                  cy="80"
+                  r="70"
                   stroke="currentColor"
                   strokeWidth="8"
                   fill="none"
-                  className="text-dark-tertiary"
+                  className="text-white/10"
                 />
                 <circle
-                  cx="64"
-                  cy="64"
-                  r="56"
+                  cx="80"
+                  cy="80"
+                  r="70"
                   stroke="currentColor"
                   strokeWidth="8"
                   fill="none"
-                  strokeDasharray={`${analysis.overallScore * 3.51} 351.86`}
-                  className="text-neon-blue"
+                  strokeDasharray={`${analysis.overallScore * 4.4} 440`}
+                  className="text-cream"
                 />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-3xl font-bold text-white">{analysis.overallScore}</span>
+                <span className="text-5xl font-black text-white">{analysis.overallScore}</span>
               </div>
             </div>
-            <h3 className="text-xl font-semibold text-white">Posture Score</h3>
-            <p className="text-gray-400">Good running form with room for improvement</p>
+            <h3 className="text-3xl font-black text-white mb-4 tracking-tight uppercase">
+              POSTURE SCORE
+            </h3>
+            <p className="text-white/60 text-lg font-medium tracking-wider uppercase">
+              Good form with room for improvement
+            </p>
           </div>
 
           {/* Issues */}
-          <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-white">Areas of Concern</h3>
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-white tracking-widest uppercase">
+              AREAS OF CONCERN
+            </h3>
             {analysis.issues.map((issue: any, index: number) => (
-              <div key={index} className="neumorphic p-4 rounded-xl">
-                <div className="flex items-center space-x-3">
-                  <AlertCircle size={20} className="text-neon-orange" />
+              <div key={index} className="card-minimal p-6 rounded-2xl">
+                <div className="flex items-center space-x-4">
+                  <AlertCircle size={24} className="text-cream" />
                   <div className="flex-1">
-                    <div className="text-white font-medium">{issue.type}</div>
-                    <div className="text-sm text-gray-400">
+                    <div className="text-white font-bold text-lg tracking-wider uppercase">
+                      {issue.type}
+                    </div>
+                    <div className="text-white/60 font-medium tracking-wider uppercase">
                       {issue.severity} - {issue.angle} deviation
                     </div>
                   </div>
@@ -243,25 +287,30 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
           </div>
 
           {/* Recommendations */}
-          <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-white">Recommendations</h3>
+          <div className="space-y-6">
+            <h3 className="text-2xl font-bold text-white tracking-widest uppercase">
+              RECOMMENDATIONS
+            </h3>
             {analysis.recommendations.map((rec: string, index: number) => (
-              <div key={index} className="neumorphic p-4 rounded-xl">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle size={20} className="text-neon-blue" />
-                  <span className="text-gray-300">{rec}</span>
+              <div key={index} className="card-minimal p-6 rounded-2xl">
+                <div className="flex items-center space-x-4">
+                  <CheckCircle size={24} className="text-cream" />
+                  <span className="text-white font-medium tracking-wider uppercase text-lg">
+                    {rec}
+                  </span>
                 </div>
               </div>
             ))}
           </div>
-        </div>
 
-        <button
-          onClick={() => onComplete(analysis)}
-          className="w-full p-4 rounded-2xl bg-neon-gradient text-white font-semibold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
-        >
-          Continue to Foot Analysis
-        </button>
+          {/* Continue Button */}
+          <button
+            onClick={() => onComplete(analysis)}
+            className="w-full btn-primary text-xl py-6"
+          >
+            CONTINUE TO FOOT ANALYSIS
+          </button>
+        </div>
       </div>
     );
   }
