@@ -74,63 +74,63 @@ const TemporunApp = () => {
   const showBottomNav = !['onboarding', 'posture', 'foot', 'shoes'].includes(currentScreen);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black overflow-hidden">
       {/* Main Content */}
-      <div className={`${showBottomNav ? 'pb-20' : ''}`}>
+      <div className={`${showBottomNav ? 'pb-20' : ''} h-screen overflow-hidden`}>
         {renderScreen()}
       </div>
 
       {/* Bottom Navigation */}
       {showBottomNav && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100">
-          <div className="px-6 py-4">
-            <div className="flex items-center justify-around">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black border-t border-white/10 safe-area-bottom">
+          <div className="px-4 py-3 sm:px-6 sm:py-4">
+            <div className="flex items-center justify-around max-w-lg mx-auto">
               <button
                 onClick={() => setCurrentScreen('chat')}
-                className={`flex flex-col items-center space-y-1 p-3 transition-colors ${
+                className={`flex flex-col items-center space-y-1 p-3 min-w-0 transition-all duration-300 ${
                   currentScreen === 'chat' 
-                    ? 'text-gray-900' 
-                    : 'text-gray-400'
+                    ? 'text-cream transform scale-110' 
+                    : 'text-white/40 hover:text-white/70'
                 }`}
               >
-                <MessageCircle size={20} />
-                <span className="text-xs font-medium">Coach</span>
+                <MessageCircle size={20} className="flex-shrink-0" />
+                <span className="text-xs font-semibold tracking-wider uppercase">COACH</span>
               </button>
               
               <button
                 onClick={() => setCurrentScreen('posture')}
-                className={`flex flex-col items-center space-y-1 p-3 transition-colors ${
+                className={`flex flex-col items-center space-y-1 p-3 min-w-0 transition-all duration-300 ${
                   currentScreen === 'posture' 
-                    ? 'text-gray-900' 
-                    : 'text-gray-400'
+                    ? 'text-cream transform scale-110' 
+                    : 'text-white/40 hover:text-white/70'
                 }`}
               >
-                <Camera size={20} />
-                <span className="text-xs font-medium">Analyze</span>
+                <Camera size={20} className="flex-shrink-0" />
+                <span className="text-xs font-semibold tracking-wider uppercase">ANALYZE</span>
               </button>
               
               <button
                 onClick={() => setCurrentScreen('shoes')}
-                className={`flex flex-col items-center space-y-1 p-3 transition-colors ${
+                className={`flex flex-col items-center space-y-1 p-3 min-w-0 transition-all duration-300 ${
                   currentScreen === 'shoes' 
-                    ? 'text-gray-900' 
-                    : 'text-gray-400'
+                    ? 'text-cream transform scale-110' 
+                    : 'text-white/40 hover:text-white/70'
                 }`}
               >
-                <Target size={20} />
-                <span className="text-xs font-medium">Shoes</span>
+                <Target size={20} className="flex-shrink-0" />
+                <span className="text-xs font-semibold tracking-wider uppercase">SHOES</span>
               </button>
               
               <button
                 onClick={() => setCurrentScreen('profile')}
-                className={`flex flex-col items-center space-y-1 p-3 transition-colors ${
+                className={`flex flex-col items-center space-y-1 p-3 min-w-0 transition-all duration-300 ${
                   currentScreen === 'profile' 
-                    ? 'text-gray-900' 
-                    : 'text-gray-400'
+                    ? 'text-cream transform scale-110' 
+                    : 'text-white/40 hover:text-white/70'
                 }`}
               >
-                <User size={20} />
-                <span className="text-xs font-medium">Profile</span>
+                <User size={20} className="flex-shrink-0" />
+                <span className="text-xs font-semibold tracking-wider uppercase">PROFILE</span>
               </button>
             </div>
           </div>

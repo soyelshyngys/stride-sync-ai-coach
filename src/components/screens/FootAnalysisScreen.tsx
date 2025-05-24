@@ -47,25 +47,28 @@ const FootAnalysisScreen: React.FC<FootAnalysisScreenProps> = ({ onComplete, onB
 
   if (step === 'guide') {
     return (
-      <div className="min-h-screen flex flex-col p-6">
-        <div className="flex items-center mb-8">
-          <button onClick={onBack} className="p-2 rounded-xl neumorphic mr-4">
+      <div className="min-h-screen bg-black flex flex-col p-4 sm:p-6 safe-area-inset overflow-hidden">
+        <div className="flex items-center mb-6 sm:mb-8 flex-shrink-0">
+          <button 
+            onClick={onBack} 
+            className="p-3 rounded-xl card-minimal mr-4 touch-manipulation active:scale-95 transition-transform"
+          >
             <ArrowLeft size={24} className="text-white" />
           </button>
-          <h1 className="text-2xl font-bold text-white">Foot Analysis</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-wider uppercase">FOOT ANALYSIS</h1>
         </div>
 
-        <div className="flex-1 space-y-8">
-          <div className="text-center space-y-4">
-            <div className="neumorphic p-8 rounded-3xl">
-              <div className="text-6xl mb-4">👣</div>
-              <h2 className="text-xl font-semibold text-white mb-2">Foot Structure Analysis</h2>
-              <p className="text-gray-400">We'll identify your foot type and arch pattern</p>
+        <div className="flex-1 space-y-6 sm:space-y-8 overflow-y-auto">
+          <div className="text-center space-y-4 flex-shrink-0">
+            <div className="card-minimal p-6 sm:p-8 rounded-2xl sm:rounded-3xl">
+              <div className="text-4xl sm:text-6xl mb-4">👣</div>
+              <h2 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-wide uppercase">FOOT STRUCTURE ANALYSIS</h2>
+              <p className="text-white/60 font-medium tracking-wider uppercase text-sm">IDENTIFY YOUR FOOT TYPE AND ARCH PATTERN</p>
             </div>
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Photo Guidelines:</h3>
+            <h3 className="text-base sm:text-lg font-bold text-white tracking-wider uppercase px-2">PHOTO GUIDELINES:</h3>
             <div className="space-y-3">
               {[
                 { icon: '📱', text: 'Take photo from above (top-down view)' },
@@ -73,73 +76,74 @@ const FootAnalysisScreen: React.FC<FootAnalysisScreenProps> = ({ onComplete, onB
                 { icon: '📏', text: 'Feet should fill most of the frame' },
                 { icon: '🔍', text: 'Clear view of arch and toe alignment' }
               ].map((guideline, index) => (
-                <div key={index} className="flex items-center space-x-3 neumorphic p-4 rounded-xl">
-                  <span className="text-2xl">{guideline.icon}</span>
-                  <span className="text-gray-300">{guideline.text}</span>
+                <div key={index} className="flex items-center space-x-3 card-minimal p-4 rounded-xl">
+                  <span className="text-xl sm:text-2xl flex-shrink-0">{guideline.icon}</span>
+                  <span className="text-white/80 font-medium text-sm sm:text-base">{guideline.text}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="neumorphic p-6 rounded-2xl">
-            <h4 className="text-white font-semibold mb-3">What we'll analyze:</h4>
+          <div className="card-minimal p-4 sm:p-6 rounded-xl sm:rounded-2xl">
+            <h4 className="text-white font-bold mb-3 tracking-wider uppercase text-sm sm:text-base">WHAT WE'LL ANALYZE:</h4>
             <div className="grid grid-cols-2 gap-3">
               {[
-                'Arch Height',
-                'Foot Width',
-                'Toe Alignment',
-                'Pronation Type'
+                'ARCH HEIGHT',
+                'FOOT WIDTH',
+                'TOE ALIGNMENT',
+                'PRONATION TYPE'
               ].map((feature, index) => (
-                <div key={index} className="glass-effect p-3 rounded-xl text-center">
-                  <span className="text-sm text-gray-300">{feature}</span>
+                <div key={index} className="bg-white/5 p-3 rounded-xl text-center">
+                  <span className="text-xs sm:text-sm text-white/80 font-semibold tracking-wider uppercase">{feature}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        <button
-          onClick={() => setStep('capture')}
-          className="w-full p-4 rounded-2xl bg-gradient-to-r from-neon-purple to-neon-pink text-white font-semibold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
-        >
-          Start Foot Scan
-        </button>
+        <div className="pt-6 sm:pt-8 flex-shrink-0">
+          <button
+            onClick={() => setStep('capture')}
+            className="btn-primary w-full touch-manipulation active:scale-[0.98] transition-transform"
+          >
+            <span className="font-bold tracking-widest uppercase">START FOOT SCAN</span>
+          </button>
+        </div>
       </div>
     );
   }
 
   if (step === 'capture') {
     return (
-      <div className="min-h-screen flex flex-col p-6">
-        <div className="flex items-center mb-8">
-          <button onClick={() => setStep('guide')} className="p-2 rounded-xl neumorphic mr-4">
+      <div className="min-h-screen bg-black flex flex-col p-4 sm:p-6 safe-area-inset overflow-hidden">
+        <div className="flex items-center mb-6 sm:mb-8 flex-shrink-0">
+          <button 
+            onClick={() => setStep('guide')} 
+            className="p-3 rounded-xl card-minimal mr-4 touch-manipulation active:scale-95 transition-transform"
+          >
             <ArrowLeft size={24} className="text-white" />
           </button>
-          <h1 className="text-2xl font-bold text-white">Capture Feet</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-wider uppercase">CAPTURE FEET</h1>
         </div>
 
-        <div className="flex-1 flex flex-col justify-center space-y-8">
-          <div className="neumorphic rounded-3xl p-8 text-center">
-            <div className="border-4 border-dashed border-neon-purple/30 rounded-2xl p-12 relative overflow-hidden">
-              <div className="absolute inset-0 bg-neon-purple/5 animate-pulse" />
-              <div className="text-6xl mb-4">👣</div>
-              <h3 className="text-xl font-semibold text-white mb-2">Position Your Feet</h3>
-              <p className="text-gray-400 mb-6">Stand naturally, photo from above</p>
-              
-              <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute w-full h-0.5 bg-neon-purple/50 animate-scan" />
-              </div>
+        <div className="flex-1 flex flex-col justify-center space-y-6 sm:space-y-8">
+          <div className="card-minimal rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center">
+            <div className="border-4 border-dashed border-cream/30 rounded-xl sm:rounded-2xl p-8 sm:p-12 relative overflow-hidden">
+              <div className="absolute inset-0 bg-cream/5 animate-pulse" />
+              <div className="text-4xl sm:text-6xl mb-4">👣</div>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-wide uppercase">POSITION YOUR FEET</h3>
+              <p className="text-white/60 mb-6 font-medium tracking-wider uppercase text-sm">STAND NATURALLY, PHOTO FROM ABOVE</p>
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4 px-4 sm:px-0">
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="w-full p-4 rounded-2xl bg-gradient-to-r from-neon-purple to-neon-pink text-white font-semibold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              className="btn-primary w-full touch-manipulation active:scale-[0.98] transition-transform"
             >
-              <div className="flex items-center justify-center space-x-2">
+              <div className="flex items-center justify-center space-x-3">
                 <Upload size={20} />
-                <span>Upload Foot Photo</span>
+                <span className="font-bold tracking-widest uppercase">UPLOAD FOOT PHOTO</span>
               </div>
             </button>
             
@@ -158,38 +162,38 @@ const FootAnalysisScreen: React.FC<FootAnalysisScreenProps> = ({ onComplete, onB
 
   if (step === 'analyzing') {
     return (
-      <div className="min-h-screen flex flex-col justify-center items-center p-6">
-        <div className="text-center space-y-8">
+      <div className="min-h-screen bg-black flex flex-col justify-center items-center p-4 sm:p-6 safe-area-inset">
+        <div className="text-center space-y-6 sm:space-y-8 max-w-sm mx-auto">
           <div className="relative">
             {imagePreview && (
               <img 
                 src={imagePreview} 
                 alt="Analyzing" 
-                className="w-64 h-64 object-cover rounded-2xl neumorphic"
+                className="w-48 h-48 sm:w-64 sm:h-64 object-cover rounded-xl sm:rounded-2xl card-minimal mx-auto"
               />
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/80 to-transparent rounded-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent rounded-xl sm:rounded-2xl" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="neumorphic p-4 rounded-full animate-pulse-neon">
-                <Scan size={32} className="text-neon-purple animate-spin" />
+              <div className="card-minimal p-4 rounded-full animate-pulse">
+                <Scan size={28} className="text-cream animate-spin" />
               </div>
             </div>
           </div>
           
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-white">Analyzing Foot Structure</h2>
-            <p className="text-gray-400">Examining your foot anatomy and biomechanics...</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-white tracking-wide uppercase">ANALYZING FOOT STRUCTURE</h2>
+            <p className="text-white/60 font-medium tracking-wider uppercase text-sm">EXAMINING YOUR FOOT ANATOMY AND BIOMECHANICS...</p>
             
             <div className="space-y-2">
               {[
-                'Measuring arch height',
-                'Analyzing toe alignment',
-                'Detecting pronation pattern',
-                'Calculating optimal sizing'
+                'MEASURING ARCH HEIGHT',
+                'ANALYZING TOE ALIGNMENT',
+                'DETECTING PRONATION PATTERN',
+                'CALCULATING OPTIMAL SIZING'
               ].map((step, index) => (
-                <div key={index} className="flex items-center space-x-3 neumorphic p-3 rounded-xl">
-                  <div className="w-2 h-2 bg-neon-purple rounded-full animate-pulse" />
-                  <span className="text-gray-300">{step}</span>
+                <div key={index} className="flex items-center space-x-3 card-minimal p-3 rounded-xl">
+                  <div className="w-2 h-2 bg-cream rounded-full animate-pulse flex-shrink-0" />
+                  <span className="text-white/80 font-medium text-sm tracking-wider uppercase">{step}</span>
                 </div>
               ))}
             </div>
@@ -201,40 +205,43 @@ const FootAnalysisScreen: React.FC<FootAnalysisScreenProps> = ({ onComplete, onB
 
   if (step === 'results' && analysis) {
     return (
-      <div className="min-h-screen flex flex-col p-6">
-        <div className="flex items-center mb-8">
-          <button onClick={() => setStep('capture')} className="p-2 rounded-xl neumorphic mr-4">
+      <div className="min-h-screen bg-black flex flex-col p-4 sm:p-6 safe-area-inset overflow-hidden">
+        <div className="flex items-center mb-6 sm:mb-8 flex-shrink-0">
+          <button 
+            onClick={() => setStep('capture')} 
+            className="p-3 rounded-xl card-minimal mr-4 touch-manipulation active:scale-95 transition-transform"
+          >
             <ArrowLeft size={24} className="text-white" />
           </button>
-          <h1 className="text-2xl font-bold text-white">Foot Analysis Results</h1>
+          <h1 className="text-lg sm:text-2xl font-bold text-white tracking-wider uppercase">FOOT ANALYSIS RESULTS</h1>
         </div>
 
-        <div className="flex-1 space-y-6">
+        <div className="flex-1 space-y-6 overflow-y-auto">
           {/* Foot Type Overview */}
-          <div className="neumorphic p-6 rounded-2xl text-center">
-            <div className="text-4xl mb-4">👣</div>
-            <h3 className="text-2xl font-bold text-white mb-2">{analysis.footType}</h3>
-            <p className="text-neon-purple font-semibold">{analysis.pronationType} Pronation</p>
+          <div className="card-minimal p-6 rounded-2xl text-center">
+            <div className="text-3xl sm:text-4xl mb-4">👣</div>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 tracking-wide uppercase">{analysis.footType}</h3>
+            <p className="text-cream font-bold tracking-wider uppercase">{analysis.pronationType} PRONATION</p>
             <div className="grid grid-cols-2 gap-4 mt-4">
-              <div className="glass-effect p-3 rounded-xl">
-                <div className="text-sm text-gray-400">Length</div>
-                <div className="text-white font-semibold">{analysis.footLength}</div>
+              <div className="bg-white/5 p-3 rounded-xl">
+                <div className="text-xs text-white/60 font-semibold tracking-wider uppercase">LENGTH</div>
+                <div className="text-white font-bold">{analysis.footLength}</div>
               </div>
-              <div className="glass-effect p-3 rounded-xl">
-                <div className="text-sm text-gray-400">Width</div>
-                <div className="text-white font-semibold">{analysis.footWidth}</div>
+              <div className="bg-white/5 p-3 rounded-xl">
+                <div className="text-xs text-white/60 font-semibold tracking-wider uppercase">WIDTH</div>
+                <div className="text-white font-bold">{analysis.footWidth}</div>
               </div>
             </div>
           </div>
 
           {/* Characteristics */}
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-white">Foot Characteristics</h3>
+            <h3 className="text-base sm:text-lg font-bold text-white tracking-wider uppercase">FOOT CHARACTERISTICS</h3>
             {analysis.characteristics.map((char: string, index: number) => (
-              <div key={index} className="neumorphic p-4 rounded-xl">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle size={20} className="text-neon-purple" />
-                  <span className="text-gray-300">{char}</span>
+              <div key={index} className="card-minimal p-4 rounded-xl">
+                <div className="flex items-start space-x-3">
+                  <CheckCircle size={18} className="text-cream flex-shrink-0 mt-0.5" />
+                  <span className="text-white/80 font-medium text-sm">{char}</span>
                 </div>
               </div>
             ))}
@@ -242,24 +249,26 @@ const FootAnalysisScreen: React.FC<FootAnalysisScreenProps> = ({ onComplete, onB
 
           {/* Recommended Shoe Features */}
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-white">Recommended Shoe Features</h3>
+            <h3 className="text-base sm:text-lg font-bold text-white tracking-wider uppercase">RECOMMENDED SHOE FEATURES</h3>
             {analysis.shoeFeatures.map((feature: string, index: number) => (
-              <div key={index} className="neumorphic p-4 rounded-xl">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-neon-pink rounded-full" />
-                  <span className="text-gray-300">{feature}</span>
+              <div key={index} className="card-minimal p-4 rounded-xl">
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-cream rounded-full flex-shrink-0 mt-2" />
+                  <span className="text-white/80 font-medium text-sm">{feature}</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <button
-          onClick={() => onComplete(analysis)}
-          className="w-full p-4 rounded-2xl bg-gradient-to-r from-neon-purple to-neon-pink text-white font-semibold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
-        >
-          Get Shoe Recommendations
-        </button>
+        <div className="pt-6 flex-shrink-0">
+          <button
+            onClick={() => onComplete(analysis)}
+            className="btn-primary w-full touch-manipulation active:scale-[0.98] transition-transform"
+          >
+            <span className="font-bold tracking-widest uppercase">GET SHOE RECOMMENDATIONS</span>
+          </button>
+        </div>
       </div>
     );
   }

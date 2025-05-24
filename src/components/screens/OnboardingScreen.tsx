@@ -17,20 +17,20 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
       subtitle: "AI-POWERED RUNNING INTELLIGENCE",
       description: "ANALYZE YOUR POSTURE, DISCOVER YOUR FOOT TYPE, AND GET PERSONALIZED SHOE RECOMMENDATIONS",
       component: (
-        <div className="text-center space-y-12">
-          <div className="space-y-8">
-            <div className="flex items-center justify-center space-x-12">
-              <div className="card-minimal p-8 rounded-3xl hover:bg-white/5 transition-all duration-500">
-                <Camera size={40} className="text-cream mx-auto" />
+        <div className="text-center space-y-8 sm:space-y-12">
+          <div className="space-y-6 sm:space-y-8">
+            <div className="flex items-center justify-center space-x-6 sm:space-x-12">
+              <div className="card-minimal p-6 sm:p-8 rounded-2xl sm:rounded-3xl hover:bg-white/5 transition-all duration-500">
+                <Camera size={32} className="text-cream mx-auto sm:w-10 sm:h-10" />
               </div>
-              <div className="card-minimal p-8 rounded-3xl hover:bg-white/5 transition-all duration-500">
-                <Target size={40} className="text-cream mx-auto" />
+              <div className="card-minimal p-6 sm:p-8 rounded-2xl sm:rounded-3xl hover:bg-white/5 transition-all duration-500">
+                <Target size={32} className="text-cream mx-auto sm:w-10 sm:h-10" />
               </div>
-              <div className="card-minimal p-8 rounded-3xl hover:bg-white/5 transition-all duration-500">
-                <MessageCircle size={40} className="text-cream mx-auto" />
+              <div className="card-minimal p-6 sm:p-8 rounded-2xl sm:rounded-3xl hover:bg-white/5 transition-all duration-500">
+                <MessageCircle size={32} className="text-cream mx-auto sm:w-10 sm:h-10" />
               </div>
             </div>
-            <p className="text-white/60 text-lg font-medium tracking-wide max-w-lg mx-auto uppercase">
+            <p className="text-white/60 text-base sm:text-lg font-medium tracking-wide max-w-sm sm:max-w-lg mx-auto uppercase px-4">
               PERSONALIZED RUNNING INSIGHTS POWERED BY AI ANALYSIS
             </p>
           </div>
@@ -42,14 +42,14 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
       subtitle: "LET'S PERSONALIZE YOUR EXPERIENCE",
       description: "WE'LL USE THIS TO CUSTOMIZE YOUR RECOMMENDATIONS",
       component: (
-        <div className="space-y-8">
-          <div className="card-minimal p-8 rounded-2xl">
+        <div className="space-y-6 sm:space-y-8 px-4 sm:px-0">
+          <div className="card-minimal p-6 sm:p-8 rounded-xl sm:rounded-2xl">
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="ENTER YOUR NAME"
-              className="w-full bg-transparent text-2xl font-semibold text-white placeholder-white/30 border-none outline-none uppercase tracking-wider"
+              className="w-full bg-transparent text-xl sm:text-2xl font-semibold text-white placeholder-white/30 border-none outline-none uppercase tracking-wider text-center sm:text-left"
               autoFocus
             />
           </div>
@@ -61,7 +61,7 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
       subtitle: "HELP US UNDERSTAND YOUR NEEDS",
       description: "THIS HELPS US PROVIDE BETTER RECOMMENDATIONS",
       component: (
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4 px-4 sm:px-0">
           {[
             { id: 'casual', label: 'CASUAL FITNESS', desc: 'STAY HEALTHY AND ACTIVE' },
             { id: 'marathon', label: 'MARATHON TRAINING', desc: 'LONG DISTANCE GOALS' },
@@ -71,14 +71,14 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
             <button
               key={goal.id}
               onClick={() => setRunningGoals(goal.id)}
-              className={`w-full p-8 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] ${
+              className={`w-full p-6 sm:p-8 rounded-xl sm:rounded-2xl transition-all duration-300 transform active:scale-[0.98] touch-manipulation ${
                 runningGoals === goal.id
                   ? 'bg-cream text-black'
-                  : 'card-minimal hover:bg-white/5'
+                  : 'card-minimal hover:bg-white/5 active:bg-white/10'
               }`}
             >
               <div className="text-left">
-                <div className={`text-xl font-bold mb-2 tracking-wide ${
+                <div className={`text-lg sm:text-xl font-bold mb-2 tracking-wide ${
                   runningGoals === goal.id ? 'text-black' : 'text-white'
                 }`}>
                   {goal.label}
@@ -114,9 +114,9 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
   };
 
   return (
-    <div className="min-h-screen bg-black flex flex-col p-8">
+    <div className="min-h-screen bg-black flex flex-col p-4 sm:p-8 safe-area-inset overflow-hidden">
       {/* Progress Bar */}
-      <div className="mb-12">
+      <div className="mb-8 sm:mb-12 flex-shrink-0">
         <div className="flex space-x-2">
           {steps.map((_, index) => (
             <div
@@ -130,32 +130,32 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
       </div>
 
       {/* Content */}
-      <div className="flex-1 flex flex-col justify-center space-y-12">
-        <div className="text-center space-y-6">
-          <h1 className="text-5xl font-black text-white tracking-tight leading-tight">
+      <div className="flex-1 flex flex-col justify-center space-y-8 sm:space-y-12 min-h-0 overflow-y-auto">
+        <div className="text-center space-y-4 sm:space-y-6 flex-shrink-0">
+          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight px-4 sm:px-0">
             {steps[currentStep].title}
           </h1>
-          <h2 className="text-xl font-semibold text-white/70 tracking-widest uppercase">
+          <h2 className="text-lg sm:text-xl font-semibold text-white/70 tracking-widest uppercase px-4 sm:px-0">
             {steps[currentStep].subtitle}
           </h2>
-          <p className="text-white/50 font-medium tracking-wide uppercase text-sm">
+          <p className="text-white/50 font-medium tracking-wide uppercase text-xs sm:text-sm px-4 sm:px-0">
             {steps[currentStep].description}
           </p>
         </div>
 
-        <div>
+        <div className="flex-1 min-h-0">
           {steps[currentStep].component}
         </div>
       </div>
 
       {/* Navigation */}
-      <div className="pt-12">
+      <div className="pt-8 sm:pt-12 flex-shrink-0">
         <button
           onClick={handleNext}
           disabled={!canProceed()}
-          className={`w-full transition-all duration-300 transform ${
+          className={`w-full transition-all duration-300 transform active:scale-[0.98] touch-manipulation ${
             canProceed()
-              ? 'btn-primary'
+              ? 'btn-primary hover:scale-[1.02]'
               : 'bg-white/10 text-white/30 px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider cursor-not-allowed'
           }`}
         >
