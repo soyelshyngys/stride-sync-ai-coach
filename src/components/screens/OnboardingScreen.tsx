@@ -114,9 +114,9 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
   };
 
   return (
-    <div className="min-h-screen bg-black flex flex-col p-4 sm:p-8 safe-area-inset overflow-hidden">
+    <div className="min-h-screen bg-black flex flex-col safe-area-inset overflow-hidden">
       {/* Progress Bar */}
-      <div className="mb-8 sm:mb-12 flex-shrink-0">
+      <div className="flex-shrink-0 p-4 sm:p-8 pb-0">
         <div className="flex space-x-2">
           {steps.map((_, index) => (
             <div
@@ -129,43 +129,49 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="flex-1 flex flex-col justify-center space-y-8 sm:space-y-12 min-h-0 overflow-y-auto">
-        <div className="text-center space-y-4 sm:space-y-6 flex-shrink-0">
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight px-4 sm:px-0">
-            {steps[currentStep].title}
-          </h1>
-          <h2 className="text-lg sm:text-xl font-semibold text-white/70 tracking-widest uppercase px-4 sm:px-0">
-            {steps[currentStep].subtitle}
-          </h2>
-          <p className="text-white/50 font-medium tracking-wide uppercase text-xs sm:text-sm px-4 sm:px-0">
-            {steps[currentStep].description}
-          </p>
-        </div>
+      {/* Scrollable Content */}
+      <div className="flex-1 overflow-y-auto pb-32 sm:pb-36">
+        <div className="p-4 sm:p-8 pt-8 sm:pt-12">
+          {/* Header */}
+          <div className="text-center space-y-4 sm:space-y-6 mb-8 sm:mb-12">
+            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+              {steps[currentStep].title}
+            </h1>
+            <h2 className="text-lg sm:text-xl font-semibold text-white/70 tracking-widest uppercase">
+              {steps[currentStep].subtitle}
+            </h2>
+            <p className="text-white/50 font-medium tracking-wide uppercase text-xs sm:text-sm">
+              {steps[currentStep].description}
+            </p>
+          </div>
 
-        <div className="flex-1 min-h-0">
-          {steps[currentStep].component}
+          {/* Step Content */}
+          <div className="min-h-0">
+            {steps[currentStep].component}
+          </div>
         </div>
       </div>
 
-      {/* Navigation */}
-      <div className="pt-8 sm:pt-12 flex-shrink-0">
-        <button
-          onClick={handleNext}
-          disabled={!canProceed()}
-          className={`w-full transition-all duration-300 transform active:scale-[0.98] touch-manipulation ${
-            canProceed()
-              ? 'btn-primary hover:scale-[1.02]'
-              : 'bg-white/10 text-white/30 px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider cursor-not-allowed'
-          }`}
-        >
-          <div className="flex items-center justify-center space-x-3">
-            <span className="font-bold tracking-widest">
-              {currentStep === steps.length - 1 ? 'START ANALYSIS' : 'CONTINUE'}
-            </span>
-            <ChevronRight size={20} />
-          </div>
-        </button>
+      {/* Fixed Bottom CTA */}
+      <div className="fixed-bottom-cta">
+        <div className="p-4 sm:p-6 safe-area-bottom">
+          <button
+            onClick={handleNext}
+            disabled={!canProceed()}
+            className={`w-full transition-all duration-300 transform active:scale-[0.98] touch-manipulation ${
+              canProceed()
+                ? 'btn-primary hover:scale-[1.02]'
+                : 'bg-white/10 text-white/30 px-8 py-4 rounded-full font-semibold text-sm uppercase tracking-wider cursor-not-allowed'
+            }`}
+          >
+            <div className="flex items-center justify-center space-x-3">
+              <span className="font-bold tracking-widest">
+                {currentStep === steps.length - 1 ? 'START ANALYSIS' : 'CONTINUE'}
+              </span>
+              <ChevronRight size={20} />
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   );

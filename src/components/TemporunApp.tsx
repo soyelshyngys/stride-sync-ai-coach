@@ -76,7 +76,7 @@ const TemporunApp = () => {
   return (
     <div className="min-h-screen bg-black overflow-hidden">
       {/* Main Content */}
-      <div className={`${showBottomNav ? 'pb-20' : ''} h-screen overflow-hidden`}>
+      <div className="h-screen overflow-hidden">
         {renderScreen()}
       </div>
 

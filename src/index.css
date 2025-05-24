@@ -170,9 +170,11 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Fixed bottom CTA styling */
+  /* Fixed bottom CTA styling - IMPROVED for mobile visibility */
   .fixed-bottom-cta {
     @apply fixed bottom-0 left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-white/10 z-50;
+    /* Ensure it appears above all content */
+    z-index: 9999;
   }
 
   /* Mobile optimizations */
@@ -187,16 +189,33 @@
       @apply px-4 py-3 text-sm;
       min-height: 44px;
     }
+
+    /* Ensure fixed CTAs have enough space on mobile */
+    .fixed-bottom-cta {
+      /* Add extra padding for mobile browsers with bottom bars */
+      padding-bottom: calc(16px + env(safe-area-inset-bottom));
+    }
   }
 
-  /* Ensure content doesn't overlap with fixed CTAs */
+  /* Content spacing to prevent overlap with fixed CTAs */
   .content-with-fixed-cta {
-    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
   }
 
   @media (min-width: 640px) {
     .content-with-fixed-cta {
-      padding-bottom: calc(96px + env(safe-area-inset-bottom));
+      padding-bottom: calc(120px + env(safe-area-inset-bottom));
+    }
+  }
+
+  /* Specific spacing for scrollable content in onboarding */
+  .onboarding-content {
+    padding-bottom: calc(120px + env(safe-area-inset-bottom));
+  }
+
+  @media (max-width: 640px) {
+    .onboarding-content {
+      padding-bottom: calc(100px + env(safe-area-inset-bottom));
     }
   }
 }
@@ -244,4 +263,24 @@ html, body {
   overflow: hidden;
   height: 100vh;
   height: 100dvh;
+}
+
+/* Enhanced mobile viewport handling */
+@supports (height: 100dvh) {
+  .fixed-bottom-cta {
+    bottom: 0;
+  }
+}
+
+/* Additional safety for very small screens */
+@media (max-height: 600px) {
+  .fixed-bottom-cta {
+    position: fixed;
+    bottom: 0;
+    z-index: 9999;
+  }
+  
+  .onboarding-content {
+    padding-bottom: calc(140px + env(safe-area-inset-bottom));
+  }
 }
