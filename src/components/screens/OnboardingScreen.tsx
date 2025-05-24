@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { ChevronRight, Target, Camera, MessageCircle } from 'lucide-react';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface OnboardingScreenProps {
   onComplete: (data: { name: string; runningGoals: string }) => void;
@@ -61,9 +62,9 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
       subtitle: "HELP US UNDERSTAND YOUR NEEDS",
       description: "THIS HELPS US PROVIDE BETTER RECOMMENDATIONS",
       component: (
-        <div className="h-full flex flex-col">
-          <div className="flex-1 overflow-y-auto px-4 sm:px-0">
-            <div className="space-y-3 sm:space-y-4 pb-6">
+        <div className="h-full flex flex-col px-4 sm:px-0">
+          <ScrollArea className="flex-1 w-full">
+            <div className="space-y-4 pb-8 pr-4">
               {[
                 { id: 'casual', label: 'CASUAL FITNESS', desc: 'STAY HEALTHY AND ACTIVE' },
                 { id: 'marathon', label: 'MARATHON TRAINING', desc: 'LONG DISTANCE GOALS' },
@@ -94,7 +95,7 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
                 </button>
               ))}
             </div>
-          </div>
+          </ScrollArea>
         </div>
       )
     }
@@ -133,28 +134,26 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
         </div>
       </div>
 
-      {/* Scrollable Content */}
-      <div className="flex-1 overflow-hidden">
-        <div className="h-full flex flex-col">
-          <div className="flex-shrink-0 p-4 sm:p-8 pt-8 sm:pt-12">
-            {/* Header */}
-            <div className="text-center space-y-4 sm:space-y-6 mb-8 sm:mb-12">
-              <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                {steps[currentStep].title}
-              </h1>
-              <h2 className="text-lg sm:text-xl font-semibold text-white/70 tracking-widest uppercase">
-                {steps[currentStep].subtitle}
-              </h2>
-              <p className="text-white/50 font-medium tracking-wide uppercase text-xs sm:text-sm">
-                {steps[currentStep].description}
-              </p>
-            </div>
+      {/* Content Container */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Header */}
+        <div className="flex-shrink-0 p-4 sm:p-8 pt-8 sm:pt-12">
+          <div className="text-center space-y-4 sm:space-y-6">
+            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+              {steps[currentStep].title}
+            </h1>
+            <h2 className="text-lg sm:text-xl font-semibold text-white/70 tracking-widest uppercase">
+              {steps[currentStep].subtitle}
+            </h2>
+            <p className="text-white/50 font-medium tracking-wide uppercase text-xs sm:text-sm">
+              {steps[currentStep].description}
+            </p>
           </div>
+        </div>
 
-          {/* Step Content - Now properly sized for scrolling */}
-          <div className="flex-1 px-4 sm:px-8 pb-32 sm:pb-36 overflow-hidden">
-            {steps[currentStep].component}
-          </div>
+        {/* Step Content - Flexible container for scrolling */}
+        <div className="flex-1 px-4 sm:px-8 pb-4 overflow-hidden min-h-0">
+          {steps[currentStep].component}
         </div>
       </div>
 
