@@ -44,57 +44,67 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
 
   if (step === 'guide') {
     return (
-      <div className="min-h-screen bg-black">
+      <div className="h-full flex flex-col bg-black safe-area-inset">
         {/* Header */}
-        <div className="flex items-center p-8 border-b border-white/10">
-          <button onClick={onBack} className="p-3 hover:bg-white/5 rounded-xl transition-colors mr-4">
-            <ArrowLeft size={24} className="text-white" />
+        <div className="flex-shrink-0 flex items-center px-4 py-4 sm:px-6 sm:py-6 border-b border-white/10">
+          <button 
+            onClick={onBack} 
+            className="p-2 sm:p-3 hover:bg-white/5 rounded-xl transition-colors mr-3 sm:mr-4 touch-manipulation"
+          >
+            <ArrowLeft size={20} className="text-white sm:w-6 sm:h-6" />
           </button>
-          <h1 className="text-2xl font-bold text-white tracking-widest uppercase">POSTURE ANALYSIS</h1>
+          <h1 className="text-lg sm:text-2xl font-bold text-white tracking-widest uppercase">
+            POSTURE ANALYSIS
+          </h1>
         </div>
 
-        <div className="p-8 space-y-12">
-          {/* Main Guide Section */}
-          <div className="text-center">
-            <div className="card-minimal p-12 rounded-3xl">
-              <Camera size={72} className="text-cream mx-auto mb-8" />
-              <h2 className="text-4xl font-black text-white mb-6 tracking-tight uppercase">
-                SIDE PROFILE PHOTO
-              </h2>
-              <p className="text-white/60 text-lg font-medium tracking-wider uppercase">
-                AI analysis of your running posture
-              </p>
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto px-4 sm:px-6">
+          <div className="py-6 sm:py-8 space-y-8 sm:space-y-12 max-w-2xl mx-auto">
+            {/* Main Guide Section */}
+            <div className="text-center">
+              <div className="card-minimal p-8 sm:p-12 rounded-2xl sm:rounded-3xl">
+                <Camera size={48} className="text-cream mx-auto mb-6 sm:w-18 sm:h-18" />
+                <h2 className="text-2xl sm:text-4xl font-black text-white mb-4 sm:mb-6 tracking-tight uppercase">
+                  SIDE PROFILE PHOTO
+                </h2>
+                <p className="text-white/60 text-sm sm:text-lg font-medium tracking-wider uppercase">
+                  AI analysis of your running posture
+                </p>
+              </div>
             </div>
-          </div>
 
-          {/* Guidelines */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white tracking-widest uppercase text-center">
-              PHOTO GUIDELINES
-            </h3>
-            <div className="space-y-4">
-              {[
-                { icon: '📱', text: 'Hold phone horizontally (landscape mode)' },
-                { icon: '👤', text: 'Stand in running position from the side' },
-                { icon: '💡', text: 'Ensure good lighting and clear background' },
-                { icon: '📏', text: 'Full body should be visible in frame' }
-              ].map((guideline, index) => (
-                <div key={index} className="card-minimal p-6 rounded-2xl">
-                  <div className="flex items-center space-x-4">
-                    <span className="text-3xl">{guideline.icon}</span>
-                    <span className="text-white font-medium tracking-wider uppercase text-lg">
-                      {guideline.text}
-                    </span>
+            {/* Guidelines */}
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-widest uppercase text-center">
+                PHOTO GUIDELINES
+              </h3>
+              <div className="space-y-3 sm:space-y-4">
+                {[
+                  { icon: '📱', text: 'Hold phone horizontally (landscape mode)' },
+                  { icon: '👤', text: 'Stand in running position from the side' },
+                  { icon: '💡', text: 'Ensure good lighting and clear background' },
+                  { icon: '📏', text: 'Full body should be visible in frame' }
+                ].map((guideline, index) => (
+                  <div key={index} className="card-minimal p-4 sm:p-6 rounded-xl sm:rounded-2xl">
+                    <div className="flex items-center space-x-3 sm:space-x-4">
+                      <span className="text-2xl sm:text-3xl flex-shrink-0">{guideline.icon}</span>
+                      <span className="text-white font-medium tracking-wider uppercase text-sm sm:text-lg">
+                        {guideline.text}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Continue Button */}
+        {/* Fixed Bottom Button */}
+        <div className="flex-shrink-0 p-4 sm:p-6 safe-area-bottom">
           <button
             onClick={() => setStep('capture')}
-            className="w-full btn-primary text-xl py-6"
+            className="w-full btn-primary text-lg sm:text-xl py-4 sm:py-6 touch-manipulation"
           >
             READY TO CAPTURE
           </button>
@@ -105,26 +115,32 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
 
   if (step === 'capture') {
     return (
-      <div className="min-h-screen bg-black">
+      <div className="h-full flex flex-col bg-black safe-area-inset">
         {/* Header */}
-        <div className="flex items-center p-8 border-b border-white/10">
-          <button onClick={() => setStep('guide')} className="p-3 hover:bg-white/5 rounded-xl transition-colors mr-4">
-            <ArrowLeft size={24} className="text-white" />
+        <div className="flex-shrink-0 flex items-center px-4 py-4 sm:px-6 sm:py-6 border-b border-white/10">
+          <button 
+            onClick={() => setStep('guide')} 
+            className="p-2 sm:p-3 hover:bg-white/5 rounded-xl transition-colors mr-3 sm:mr-4 touch-manipulation"
+          >
+            <ArrowLeft size={20} className="text-white sm:w-6 sm:h-6" />
           </button>
-          <h1 className="text-2xl font-bold text-white tracking-widest uppercase">CAPTURE PHOTO</h1>
+          <h1 className="text-lg sm:text-2xl font-bold text-white tracking-widest uppercase">
+            CAPTURE PHOTO
+          </h1>
         </div>
 
-        <div className="p-8 flex flex-col justify-center min-h-[calc(100vh-100px)]">
-          <div className="space-y-12">
+        {/* Content */}
+        <div className="flex-1 flex flex-col justify-center px-4 sm:px-6">
+          <div className="space-y-8 sm:space-y-12 max-w-2xl mx-auto w-full">
             {/* Capture Area */}
-            <div className="card-minimal rounded-3xl p-12">
-              <div className="border-4 border-dashed border-cream/30 rounded-3xl p-16 relative overflow-hidden text-center">
+            <div className="card-minimal rounded-2xl sm:rounded-3xl p-6 sm:p-12">
+              <div className="border-4 border-dashed border-cream/30 rounded-2xl sm:rounded-3xl p-8 sm:p-16 relative overflow-hidden text-center">
                 <div className="absolute inset-0 bg-cream/5 animate-pulse" />
-                <Camera size={96} className="text-cream mx-auto mb-8" />
-                <h3 className="text-3xl font-black text-white mb-4 tracking-tight uppercase">
+                <Camera size={64} className="text-cream mx-auto mb-6 sm:w-24 sm:h-24 sm:mb-8" />
+                <h3 className="text-xl sm:text-3xl font-black text-white mb-3 sm:mb-4 tracking-tight uppercase">
                   POSITION YOURSELF
                 </h3>
-                <p className="text-white/60 text-lg font-medium tracking-wider uppercase">
+                <p className="text-white/60 text-sm sm:text-lg font-medium tracking-wider uppercase">
                   Stand sideways in running stance
                 </p>
                 
@@ -138,10 +154,10 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
             {/* Upload Button */}
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="w-full btn-primary text-xl py-6"
+              className="w-full btn-primary text-lg sm:text-xl py-4 sm:py-6 touch-manipulation"
             >
               <div className="flex items-center justify-center space-x-3">
-                <Upload size={24} />
+                <Upload size={20} className="sm:w-6 sm:h-6" />
                 <span>UPLOAD PHOTO</span>
               </div>
             </button>
@@ -161,8 +177,8 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
 
   if (step === 'analyzing') {
     return (
-      <div className="min-h-screen bg-black flex flex-col justify-center items-center p-8">
-        <div className="text-center space-y-12 max-w-md">
+      <div className="h-full flex flex-col justify-center items-center bg-black p-4 sm:p-8 safe-area-inset">
+        <div className="text-center space-y-8 sm:space-y-12 max-w-md mx-auto">
           {/* Image Preview */}
           <div className="relative">
             {imagePreview && (
@@ -170,12 +186,12 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
                 <img 
                   src={imagePreview} 
                   alt="Analyzing" 
-                  className="w-80 h-80 object-cover rounded-3xl border border-white/10"
+                  className="w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-2xl sm:rounded-3xl border border-white/10"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent rounded-3xl" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent rounded-2xl sm:rounded-3xl" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="card-minimal p-6 rounded-full">
-                    <Scan size={40} className="text-cream animate-spin" />
+                  <div className="card-minimal p-4 sm:p-6 rounded-full">
+                    <Scan size={32} className="text-cream animate-spin sm:w-10 sm:h-10" />
                   </div>
                 </div>
               </div>
@@ -183,27 +199,27 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
           </div>
           
           {/* Analysis Status */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <div className="text-center">
-              <h2 className="text-4xl font-black text-white mb-4 tracking-tight uppercase">
+              <h2 className="text-2xl sm:text-4xl font-black text-white mb-3 sm:mb-4 tracking-tight uppercase">
                 ANALYZING POSTURE
               </h2>
-              <p className="text-white/60 text-lg font-medium tracking-wider uppercase">
+              <p className="text-white/60 text-sm sm:text-lg font-medium tracking-wider uppercase">
                 AI examining your running stance
               </p>
             </div>
             
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {[
                 'Detecting body landmarks',
                 'Measuring joint angles',
                 'Analyzing alignment',
                 'Generating recommendations'
               ].map((step, index) => (
-                <div key={index} className="card-minimal p-4 rounded-xl">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-3 h-3 bg-cream rounded-full animate-pulse" />
-                    <span className="text-white font-medium tracking-wider uppercase">
+                <div key={index} className="card-minimal p-3 sm:p-4 rounded-lg sm:rounded-xl">
+                  <div className="flex items-center space-x-3 sm:space-x-4">
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-cream rounded-full animate-pulse flex-shrink-0" />
+                    <span className="text-white font-medium tracking-wider uppercase text-sm sm:text-base">
                       {step}
                     </span>
                   </div>
@@ -218,95 +234,105 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
 
   if (step === 'results' && analysis) {
     return (
-      <div className="min-h-screen bg-black">
+      <div className="h-full flex flex-col bg-black safe-area-inset">
         {/* Header */}
-        <div className="flex items-center p-8 border-b border-white/10">
-          <button onClick={() => setStep('capture')} className="p-3 hover:bg-white/5 rounded-xl transition-colors mr-4">
-            <ArrowLeft size={24} className="text-white" />
+        <div className="flex-shrink-0 flex items-center px-4 py-4 sm:px-6 sm:py-6 border-b border-white/10">
+          <button 
+            onClick={() => setStep('capture')} 
+            className="p-2 sm:p-3 hover:bg-white/5 rounded-xl transition-colors mr-3 sm:mr-4 touch-manipulation"
+          >
+            <ArrowLeft size={20} className="text-white sm:w-6 sm:h-6" />
           </button>
-          <h1 className="text-2xl font-bold text-white tracking-widest uppercase">ANALYSIS RESULTS</h1>
+          <h1 className="text-lg sm:text-2xl font-bold text-white tracking-widest uppercase">
+            ANALYSIS RESULTS
+          </h1>
         </div>
 
-        <div className="p-8 space-y-12">
-          {/* Overall Score */}
-          <div className="card-minimal p-12 rounded-3xl text-center">
-            <div className="relative w-40 h-40 mx-auto mb-8">
-              <svg className="w-40 h-40 transform -rotate-90">
-                <circle
-                  cx="80"
-                  cy="80"
-                  r="70"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                  fill="none"
-                  className="text-white/10"
-                />
-                <circle
-                  cx="80"
-                  cy="80"
-                  r="70"
-                  stroke="currentColor"
-                  strokeWidth="8"
-                  fill="none"
-                  strokeDasharray={`${analysis.overallScore * 4.4} 440`}
-                  className="text-cream"
-                />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-5xl font-black text-white">{analysis.overallScore}</span>
+        {/* Content */}
+        <div className="flex-1 overflow-y-auto px-4 sm:px-6">
+          <div className="py-6 sm:py-8 space-y-8 sm:space-y-12 max-w-2xl mx-auto">
+            {/* Overall Score */}
+            <div className="card-minimal p-8 sm:p-12 rounded-2xl sm:rounded-3xl text-center">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 sm:mb-8">
+                <svg className="w-32 h-32 sm:w-40 sm:h-40 transform -rotate-90">
+                  <circle
+                    cx="64"
+                    cy="64"
+                    r="56"
+                    stroke="currentColor"
+                    strokeWidth="6"
+                    fill="none"
+                    className="text-white/10 sm:r-[70] sm:cx-20 sm:cy-20 sm:stroke-[8]"
+                  />
+                  <circle
+                    cx="64"
+                    cy="64"
+                    r="56"
+                    stroke="currentColor"
+                    strokeWidth="6"
+                    fill="none"
+                    strokeDasharray={`${analysis.overallScore * 3.5} 352`}
+                    className="text-cream sm:r-[70] sm:cx-20 sm:cy-20 sm:stroke-[8]"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="text-3xl sm:text-5xl font-black text-white">{analysis.overallScore}</span>
+                </div>
               </div>
+              <h3 className="text-2xl sm:text-3xl font-black text-white mb-3 sm:mb-4 tracking-tight uppercase">
+                POSTURE SCORE
+              </h3>
+              <p className="text-white/60 text-sm sm:text-lg font-medium tracking-wider uppercase">
+                Good form with room for improvement
+              </p>
             </div>
-            <h3 className="text-3xl font-black text-white mb-4 tracking-tight uppercase">
-              POSTURE SCORE
-            </h3>
-            <p className="text-white/60 text-lg font-medium tracking-wider uppercase">
-              Good form with room for improvement
-            </p>
-          </div>
 
-          {/* Issues */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white tracking-widest uppercase">
-              AREAS OF CONCERN
-            </h3>
-            {analysis.issues.map((issue: any, index: number) => (
-              <div key={index} className="card-minimal p-6 rounded-2xl">
-                <div className="flex items-center space-x-4">
-                  <AlertCircle size={24} className="text-cream" />
-                  <div className="flex-1">
-                    <div className="text-white font-bold text-lg tracking-wider uppercase">
-                      {issue.type}
-                    </div>
-                    <div className="text-white/60 font-medium tracking-wider uppercase">
-                      {issue.severity} - {issue.angle} deviation
+            {/* Issues */}
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-widest uppercase">
+                AREAS OF CONCERN
+              </h3>
+              {analysis.issues.map((issue: any, index: number) => (
+                <div key={index} className="card-minimal p-4 sm:p-6 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center space-x-3 sm:space-x-4">
+                    <AlertCircle size={20} className="text-cream flex-shrink-0 sm:w-6 sm:h-6" />
+                    <div className="flex-1 min-w-0">
+                      <div className="text-white font-bold text-sm sm:text-lg tracking-wider uppercase">
+                        {issue.type}
+                      </div>
+                      <div className="text-white/60 font-medium tracking-wider uppercase text-xs sm:text-base">
+                        {issue.severity} - {issue.angle} deviation
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* Recommendations */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white tracking-widest uppercase">
-              RECOMMENDATIONS
-            </h3>
-            {analysis.recommendations.map((rec: string, index: number) => (
-              <div key={index} className="card-minimal p-6 rounded-2xl">
-                <div className="flex items-center space-x-4">
-                  <CheckCircle size={24} className="text-cream" />
-                  <span className="text-white font-medium tracking-wider uppercase text-lg">
-                    {rec}
-                  </span>
+            {/* Recommendations */}
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-widest uppercase">
+                RECOMMENDATIONS
+              </h3>
+              {analysis.recommendations.map((rec: string, index: number) => (
+                <div key={index} className="card-minimal p-4 sm:p-6 rounded-xl sm:rounded-2xl">
+                  <div className="flex items-center space-x-3 sm:space-x-4">
+                    <CheckCircle size={20} className="text-cream flex-shrink-0 sm:w-6 sm:h-6" />
+                    <span className="text-white font-medium tracking-wider uppercase text-sm sm:text-lg">
+                      {rec}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+        </div>
 
-          {/* Continue Button */}
+        {/* Fixed Bottom Button */}
+        <div className="flex-shrink-0 p-4 sm:p-6 safe-area-bottom">
           <button
             onClick={() => onComplete(analysis)}
-            className="w-full btn-primary text-xl py-6"
+            className="w-full btn-primary text-lg sm:text-xl py-4 sm:py-6 touch-manipulation"
           >
             CONTINUE TO FOOT ANALYSIS
           </button>
