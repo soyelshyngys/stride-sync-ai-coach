@@ -1,6 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Zap, Target, Camera } from 'lucide-react';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface CoachChatScreenProps {
   userData: any;
@@ -79,9 +80,9 @@ const CoachChatScreen: React.FC<CoachChatScreenProps> = ({ userData, onNavigate 
   };
 
   return (
-    <div className="min-h-screen bg-black flex flex-col">
+    <div className="h-screen bg-black flex flex-col">
       {/* Header */}
-      <div className="card-minimal mx-6 mt-6 p-6 rounded-3xl">
+      <div className="flex-shrink-0 card-minimal mx-6 mt-6 p-6 rounded-3xl">
         <div className="flex items-center space-x-4">
           <div className="card-minimal p-4 rounded-2xl">
             <Bot size={28} className="text-cream" />
@@ -97,13 +98,13 @@ const CoachChatScreen: React.FC<CoachChatScreenProps> = ({ userData, onNavigate 
       </div>
 
       {/* Quick Actions */}
-      <div className="p-6">
-        <div className="flex space-x-4">
+      <div className="flex-shrink-0 p-6">
+        <div className="flex space-x-4 overflow-x-auto">
           {quickActions.map((action, index) => (
             <button
               key={index}
               onClick={action.action}
-              className="flex items-center space-x-2 card-minimal px-4 py-3 rounded-xl hover:bg-white/5 transition-all duration-300"
+              className="flex items-center space-x-2 card-minimal px-4 py-3 rounded-xl hover:bg-white/5 transition-all duration-300 whitespace-nowrap"
             >
               <action.icon size={16} className="text-cream" />
               <span className="text-xs text-white/70 font-medium tracking-wider uppercase">{action.text}</span>
@@ -112,78 +113,82 @@ const CoachChatScreen: React.FC<CoachChatScreenProps> = ({ userData, onNavigate 
         </div>
       </div>
 
-      {/* Messages */}
-      <div className="flex-1 px-6 pb-6 space-y-6 overflow-y-auto">
-        {messages.map((message) => (
-          <div
-            key={message.id}
-            className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-          >
-            <div
-              className={`max-w-[80%] p-6 rounded-3xl ${
-                message.type === 'user'
-                  ? 'bg-cream text-black'
-                  : 'card-minimal text-white'
-              }`}
-            >
-              <div className="flex items-start space-x-3">
-                {message.type === 'bot' && (
-                  <Bot size={18} className="text-cream mt-1" />
-                )}
-                <div className="flex-1">
-                  <p className="text-sm leading-relaxed font-medium">{message.content}</p>
-                  <span className="text-xs opacity-50 mt-3 block font-medium">
-                    {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                  </span>
-                </div>
-                {message.type === 'user' && (
-                  <User size={18} className="text-black mt-1" />
-                )}
-              </div>
-            </div>
-          </div>
-        ))}
-
-        {/* Typing Indicator */}
-        {isTyping && (
-          <div className="flex justify-start">
-            <div className="card-minimal p-6 rounded-3xl">
-              <div className="flex items-center space-x-3">
-                <Bot size={18} className="text-cream" />
-                <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-cream rounded-full animate-pulse" />
-                  <div className="w-2 h-2 bg-cream rounded-full animate-pulse delay-75" />
-                  <div className="w-2 h-2 bg-cream rounded-full animate-pulse delay-150" />
-                </div>
-                <span className="text-xs text-white/40 font-medium tracking-wider uppercase">AI IS THINKING...</span>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Suggested Questions */}
-        {messages.length === 1 && (
-          <div className="space-y-4">
-            <p className="text-center text-sm text-white/50 font-medium tracking-widest uppercase">TRY ASKING ME:</p>
-            <div className="grid grid-cols-1 gap-3">
-              {suggestedQuestions.map((question, index) => (
-                <button
-                  key={index}
-                  onClick={() => sendMessage(question)}
-                  className="p-4 card-minimal rounded-2xl text-left hover:bg-white/5 transition-all duration-300"
+      {/* Messages - Now using ScrollArea for better scrolling */}
+      <div className="flex-1 px-6 overflow-hidden">
+        <ScrollArea className="h-full pr-4">
+          <div className="space-y-6 pb-6">
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+              >
+                <div
+                  className={`max-w-[80%] p-6 rounded-3xl ${
+                    message.type === 'user'
+                      ? 'bg-cream text-black'
+                      : 'card-minimal text-white'
+                  }`}
                 >
-                  <span className="text-sm text-white/80 font-medium">{question}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+                  <div className="flex items-start space-x-3">
+                    {message.type === 'bot' && (
+                      <Bot size={18} className="text-cream mt-1 flex-shrink-0" />
+                    )}
+                    <div className="flex-1">
+                      <p className="text-sm leading-relaxed font-medium">{message.content}</p>
+                      <span className="text-xs opacity-50 mt-3 block font-medium">
+                        {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                    </div>
+                    {message.type === 'user' && (
+                      <User size={18} className="text-black mt-1 flex-shrink-0" />
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
 
-        <div ref={messagesEndRef} />
+            {/* Typing Indicator */}
+            {isTyping && (
+              <div className="flex justify-start">
+                <div className="card-minimal p-6 rounded-3xl">
+                  <div className="flex items-center space-x-3">
+                    <Bot size={18} className="text-cream" />
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-cream rounded-full animate-pulse" />
+                      <div className="w-2 h-2 bg-cream rounded-full animate-pulse delay-75" />
+                      <div className="w-2 h-2 bg-cream rounded-full animate-pulse delay-150" />
+                    </div>
+                    <span className="text-xs text-white/40 font-medium tracking-wider uppercase">AI IS THINKING...</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Suggested Questions */}
+            {messages.length === 1 && (
+              <div className="space-y-4">
+                <p className="text-center text-sm text-white/50 font-medium tracking-widest uppercase">TRY ASKING ME:</p>
+                <div className="grid grid-cols-1 gap-3">
+                  {suggestedQuestions.map((question, index) => (
+                    <button
+                      key={index}
+                      onClick={() => sendMessage(question)}
+                      className="p-4 card-minimal rounded-2xl text-left hover:bg-white/5 transition-all duration-300"
+                    >
+                      <span className="text-sm text-white/80 font-medium">{question}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div ref={messagesEndRef} />
+          </div>
+        </ScrollArea>
       </div>
 
       {/* Input Area */}
-      <div className="p-6">
+      <div className="flex-shrink-0 p-6">
         <div className="card-minimal p-6 rounded-3xl">
           <div className="flex items-center space-x-4">
             <input

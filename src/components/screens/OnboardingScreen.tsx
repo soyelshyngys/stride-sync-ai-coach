@@ -61,36 +61,40 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
       subtitle: "HELP US UNDERSTAND YOUR NEEDS",
       description: "THIS HELPS US PROVIDE BETTER RECOMMENDATIONS",
       component: (
-        <div className="space-y-3 sm:space-y-4 px-4 sm:px-0">
-          {[
-            { id: 'casual', label: 'CASUAL FITNESS', desc: 'STAY HEALTHY AND ACTIVE' },
-            { id: 'marathon', label: 'MARATHON TRAINING', desc: 'LONG DISTANCE GOALS' },
-            { id: 'speed', label: 'SPEED & PERFORMANCE', desc: 'PERSONAL RECORDS' },
-            { id: 'recovery', label: 'INJURY RECOVERY', desc: 'GETTING BACK ON TRACK' }
-          ].map((goal) => (
-            <button
-              key={goal.id}
-              onClick={() => setRunningGoals(goal.id)}
-              className={`w-full p-6 sm:p-8 rounded-xl sm:rounded-2xl transition-all duration-300 transform active:scale-[0.98] touch-manipulation ${
-                runningGoals === goal.id
-                  ? 'bg-cream text-black'
-                  : 'card-minimal hover:bg-white/5 active:bg-white/10'
-              }`}
-            >
-              <div className="text-left">
-                <div className={`text-lg sm:text-xl font-bold mb-2 tracking-wide ${
-                  runningGoals === goal.id ? 'text-black' : 'text-white'
-                }`}>
-                  {goal.label}
-                </div>
-                <div className={`text-sm font-medium tracking-wider ${
-                  runningGoals === goal.id ? 'text-black/60' : 'text-white/40'
-                }`}>
-                  {goal.desc}
-                </div>
-              </div>
-            </button>
-          ))}
+        <div className="h-full flex flex-col">
+          <div className="flex-1 overflow-y-auto px-4 sm:px-0">
+            <div className="space-y-3 sm:space-y-4 pb-6">
+              {[
+                { id: 'casual', label: 'CASUAL FITNESS', desc: 'STAY HEALTHY AND ACTIVE' },
+                { id: 'marathon', label: 'MARATHON TRAINING', desc: 'LONG DISTANCE GOALS' },
+                { id: 'speed', label: 'SPEED & PERFORMANCE', desc: 'PERSONAL RECORDS' },
+                { id: 'recovery', label: 'INJURY RECOVERY', desc: 'GETTING BACK ON TRACK' }
+              ].map((goal) => (
+                <button
+                  key={goal.id}
+                  onClick={() => setRunningGoals(goal.id)}
+                  className={`w-full p-6 sm:p-8 rounded-xl sm:rounded-2xl transition-all duration-300 transform active:scale-[0.98] touch-manipulation ${
+                    runningGoals === goal.id
+                      ? 'bg-cream text-black'
+                      : 'card-minimal hover:bg-white/5 active:bg-white/10'
+                  }`}
+                >
+                  <div className="text-left">
+                    <div className={`text-lg sm:text-xl font-bold mb-2 tracking-wide ${
+                      runningGoals === goal.id ? 'text-black' : 'text-white'
+                    }`}>
+                      {goal.label}
+                    </div>
+                    <div className={`text-sm font-medium tracking-wider ${
+                      runningGoals === goal.id ? 'text-black/60' : 'text-white/40'
+                    }`}>
+                      {goal.desc}
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       )
     }
@@ -130,23 +134,25 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
       </div>
 
       {/* Scrollable Content */}
-      <div className="flex-1 overflow-y-auto pb-32 sm:pb-36">
-        <div className="p-4 sm:p-8 pt-8 sm:pt-12">
-          {/* Header */}
-          <div className="text-center space-y-4 sm:space-y-6 mb-8 sm:mb-12">
-            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-              {steps[currentStep].title}
-            </h1>
-            <h2 className="text-lg sm:text-xl font-semibold text-white/70 tracking-widest uppercase">
-              {steps[currentStep].subtitle}
-            </h2>
-            <p className="text-white/50 font-medium tracking-wide uppercase text-xs sm:text-sm">
-              {steps[currentStep].description}
-            </p>
+      <div className="flex-1 overflow-hidden">
+        <div className="h-full flex flex-col">
+          <div className="flex-shrink-0 p-4 sm:p-8 pt-8 sm:pt-12">
+            {/* Header */}
+            <div className="text-center space-y-4 sm:space-y-6 mb-8 sm:mb-12">
+              <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+                {steps[currentStep].title}
+              </h1>
+              <h2 className="text-lg sm:text-xl font-semibold text-white/70 tracking-widest uppercase">
+                {steps[currentStep].subtitle}
+              </h2>
+              <p className="text-white/50 font-medium tracking-wide uppercase text-xs sm:text-sm">
+                {steps[currentStep].description}
+              </p>
+            </div>
           </div>
 
-          {/* Step Content */}
-          <div className="min-h-0">
+          {/* Step Content - Now properly sized for scrolling */}
+          <div className="flex-1 px-4 sm:px-8 pb-32 sm:pb-36 overflow-hidden">
             {steps[currentStep].component}
           </div>
         </div>
