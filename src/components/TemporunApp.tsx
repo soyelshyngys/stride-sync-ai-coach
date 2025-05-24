@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Camera, MessageCircle, Target, User, Zap } from 'lucide-react';
+import { Camera, MessageCircle, Target, User } from 'lucide-react';
 import OnboardingScreen from './screens/OnboardingScreen';
 import PostureAnalysisScreen from './screens/PostureAnalysisScreen';
 import FootAnalysisScreen from './screens/FootAnalysisScreen';
@@ -74,66 +74,63 @@ const TemporunApp = () => {
   const showBottomNav = !['onboarding', 'posture', 'foot', 'shoes'].includes(currentScreen);
 
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-white pointer-events-none" />
-      
+    <div className="min-h-screen bg-white">
       {/* Main Content */}
-      <div className={`relative z-10 ${showBottomNav ? 'pb-20' : ''}`}>
+      <div className={`${showBottomNav ? 'pb-20' : ''}`}>
         {renderScreen()}
       </div>
 
       {/* Bottom Navigation */}
       {showBottomNav && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-100">
-          <div className="mx-4 mb-4 pt-4">
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100">
+          <div className="px-6 py-4">
             <div className="flex items-center justify-around">
               <button
                 onClick={() => setCurrentScreen('chat')}
-                className={`flex flex-col items-center space-y-1 p-3 rounded-xl transition-all duration-300 ${
+                className={`flex flex-col items-center space-y-1 p-3 transition-colors ${
                   currentScreen === 'chat' 
-                    ? 'bg-black text-white' 
-                    : 'text-gray-600 hover:text-black'
+                    ? 'text-gray-900' 
+                    : 'text-gray-400'
                 }`}
               >
-                <MessageCircle size={24} />
-                <span className="text-xs font-medium uppercase tracking-wider">Coach</span>
+                <MessageCircle size={20} />
+                <span className="text-xs font-medium">Coach</span>
               </button>
               
               <button
                 onClick={() => setCurrentScreen('posture')}
-                className={`flex flex-col items-center space-y-1 p-3 rounded-xl transition-all duration-300 ${
+                className={`flex flex-col items-center space-y-1 p-3 transition-colors ${
                   currentScreen === 'posture' 
-                    ? 'bg-black text-white' 
-                    : 'text-gray-600 hover:text-black'
+                    ? 'text-gray-900' 
+                    : 'text-gray-400'
                 }`}
               >
-                <Camera size={24} />
-                <span className="text-xs font-medium uppercase tracking-wider">Analyze</span>
+                <Camera size={20} />
+                <span className="text-xs font-medium">Analyze</span>
               </button>
               
               <button
                 onClick={() => setCurrentScreen('shoes')}
-                className={`flex flex-col items-center space-y-1 p-3 rounded-xl transition-all duration-300 ${
+                className={`flex flex-col items-center space-y-1 p-3 transition-colors ${
                   currentScreen === 'shoes' 
-                    ? 'bg-black text-white' 
-                    : 'text-gray-600 hover:text-black'
+                    ? 'text-gray-900' 
+                    : 'text-gray-400'
                 }`}
               >
-                <Target size={24} />
-                <span className="text-xs font-medium uppercase tracking-wider">Shoes</span>
+                <Target size={20} />
+                <span className="text-xs font-medium">Shoes</span>
               </button>
               
               <button
                 onClick={() => setCurrentScreen('profile')}
-                className={`flex flex-col items-center space-y-1 p-3 rounded-xl transition-all duration-300 ${
+                className={`flex flex-col items-center space-y-1 p-3 transition-colors ${
                   currentScreen === 'profile' 
-                    ? 'bg-black text-white' 
-                    : 'text-gray-600 hover:text-black'
+                    ? 'text-gray-900' 
+                    : 'text-gray-400'
                 }`}
               >
-                <User size={24} />
-                <span className="text-xs font-medium uppercase tracking-wider">Profile</span>
+                <User size={20} />
+                <span className="text-xs font-medium">Profile</span>
               </button>
             </div>
           </div>

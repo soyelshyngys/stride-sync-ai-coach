@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ChevronRight, Zap, Target, Camera, MessageCircle } from 'lucide-react';
+import { ChevronRight, Target, Camera, MessageCircle } from 'lucide-react';
 
 interface OnboardingScreenProps {
   onComplete: (data: { name: string; runningGoals: string }) => void;
@@ -13,33 +13,25 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
 
   const steps = [
     {
-      title: "Welcome to",
-      subtitle: "TEMPORUN",
-      description: "Your AI-powered running coach and shoe stylist",
+      title: "Welcome to Temporun",
+      subtitle: "AI-powered running coach",
+      description: "Analyze your posture, discover your foot type, and get personalized shoe recommendations",
       component: (
         <div className="text-center space-y-8">
-          <div className="relative">
-            <div className="text-6xl font-black bg-neon-gradient bg-clip-text text-transparent animate-gradient-shift" style={{backgroundSize: '400% 400%'}}>
-              TEMPORUN
-            </div>
-            <div className="absolute -top-2 -right-2 text-neon-blue animate-pulse">
-              <Zap size={32} />
-            </div>
-          </div>
-          <div className="space-y-4">
-            <div className="flex items-center justify-center space-x-6">
-              <div className="neumorphic p-4 rounded-xl">
-                <Camera size={32} className="text-neon-blue" />
+          <div className="space-y-6">
+            <div className="flex items-center justify-center space-x-8">
+              <div className="card-minimal p-6 rounded-xl">
+                <Camera size={32} className="text-gray-900 mx-auto" />
               </div>
-              <div className="neumorphic p-4 rounded-xl">
-                <Target size={32} className="text-neon-purple" />
+              <div className="card-minimal p-6 rounded-xl">
+                <Target size={32} className="text-gray-900 mx-auto" />
               </div>
-              <div className="neumorphic p-4 rounded-xl">
-                <MessageCircle size={32} className="text-neon-orange" />
+              <div className="card-minimal p-6 rounded-xl">
+                <MessageCircle size={32} className="text-gray-900 mx-auto" />
               </div>
             </div>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              Analyze your running posture, discover your foot type, and get personalized shoe recommendations
+            <p className="text-gray-600 text-lg leading-relaxed max-w-md mx-auto">
+              Get personalized running insights powered by AI analysis
             </p>
           </div>
         </div>
@@ -47,17 +39,17 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
     },
     {
       title: "What's your name?",
-      subtitle: "Let's get personal",
-      description: "We'll use this to customize your experience",
+      subtitle: "Let's personalize your experience",
+      description: "We'll use this to customize your recommendations",
       component: (
         <div className="space-y-6">
-          <div className="neumorphic-inset rounded-2xl p-6">
+          <div className="card-minimal p-6 rounded-lg">
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your name"
-              className="w-full bg-transparent text-xl text-white placeholder-gray-400 border-none outline-none"
+              className="w-full bg-transparent text-xl text-gray-900 placeholder-gray-400 border-none outline-none"
               autoFocus
             />
           </div>
@@ -65,37 +57,31 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
       )
     },
     {
-      title: "Running Goals",
-      subtitle: "What drives you?",
-      description: "Help us understand your running aspirations",
+      title: "What are your running goals?",
+      subtitle: "Help us understand your needs",
+      description: "This helps us provide better recommendations",
       component: (
         <div className="space-y-4">
           {[
-            { id: 'casual', label: 'Casual Fitness', icon: '🚶', desc: 'Stay healthy and active' },
-            { id: 'marathon', label: 'Marathon Training', icon: '🏃', desc: 'Long distance goals' },
-            { id: 'speed', label: 'Speed & Performance', icon: '⚡', desc: 'Personal records' },
-            { id: 'recovery', label: 'Injury Recovery', icon: '🩹', desc: 'Getting back on track' }
+            { id: 'casual', label: 'Casual Fitness', desc: 'Stay healthy and active' },
+            { id: 'marathon', label: 'Marathon Training', desc: 'Long distance goals' },
+            { id: 'speed', label: 'Speed & Performance', desc: 'Personal records' },
+            { id: 'recovery', label: 'Injury Recovery', desc: 'Getting back on track' }
           ].map((goal) => (
             <button
               key={goal.id}
               onClick={() => setRunningGoals(goal.id)}
-              className={`w-full p-6 rounded-2xl transition-all duration-300 ${
+              className={`w-full p-6 rounded-lg transition-all ${
                 runningGoals === goal.id
-                  ? 'neumorphic neon-border bg-gradient-to-r from-neon-blue/10 to-neon-purple/10'
-                  : 'neumorphic hover:bg-dark-tertiary'
+                  ? 'bg-gray-900 text-white'
+                  : 'card-minimal hover:bg-gray-50'
               }`}
             >
-              <div className="flex items-center space-x-4">
-                <div className="text-3xl">{goal.icon}</div>
-                <div className="flex-1 text-left">
-                  <div className="text-lg font-semibold text-white">{goal.label}</div>
-                  <div className="text-sm text-gray-400">{goal.desc}</div>
+              <div className="text-left">
+                <div className="text-lg font-medium mb-1">{goal.label}</div>
+                <div className={`text-sm ${runningGoals === goal.id ? 'text-gray-300' : 'text-gray-500'}`}>
+                  {goal.desc}
                 </div>
-                {runningGoals === goal.id && (
-                  <div className="text-neon-blue animate-pulse-neon">
-                    <Zap size={20} />
-                  </div>
-                )}
               </div>
             </button>
           ))}
@@ -125,12 +111,12 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
     <div className="min-h-screen flex flex-col p-6">
       {/* Progress Bar */}
       <div className="mb-8">
-        <div className="flex space-x-2 mb-4">
+        <div className="flex space-x-2">
           {steps.map((_, index) => (
             <div
               key={index}
-              className={`h-1 flex-1 rounded-full transition-all duration-500 ${
-                index <= currentStep ? 'bg-neon-gradient' : 'bg-dark-tertiary'
+              className={`h-1 flex-1 rounded-full transition-all ${
+                index <= currentStep ? 'bg-gray-900' : 'bg-gray-200'
               }`}
             />
           ))}
@@ -140,12 +126,12 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
       {/* Content */}
       <div className="flex-1 flex flex-col justify-center space-y-8">
         <div className="text-center space-y-2">
-          <h1 className="text-3xl font-bold text-white">{steps[currentStep].title}</h1>
-          <h2 className="text-xl text-neon-blue font-semibold">{steps[currentStep].subtitle}</h2>
-          <p className="text-gray-400">{steps[currentStep].description}</p>
+          <h1 className="text-3xl font-semibold text-gray-900">{steps[currentStep].title}</h1>
+          <h2 className="text-xl text-gray-600">{steps[currentStep].subtitle}</h2>
+          <p className="text-gray-500">{steps[currentStep].description}</p>
         </div>
 
-        <div className="animate-fade-in">
+        <div>
           {steps[currentStep].component}
         </div>
       </div>
@@ -155,10 +141,10 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }) => {
         <button
           onClick={handleNext}
           disabled={!canProceed()}
-          className={`w-full p-4 rounded-2xl font-semibold text-lg transition-all duration-300 ${
+          className={`w-full p-4 rounded-lg font-medium text-lg transition-all ${
             canProceed()
-              ? 'bg-neon-gradient text-white hover:scale-[1.02] active:scale-[0.98] animate-pulse-neon'
-              : 'bg-dark-tertiary text-gray-500 cursor-not-allowed'
+              ? 'btn-primary'
+              : 'bg-gray-200 text-gray-400 cursor-not-allowed'
           }`}
         >
           <div className="flex items-center justify-center space-x-2">

@@ -52,18 +52,6 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				// Temporun custom colors
-				neon: {
-					blue: '#00D4FF',
-					purple: '#8B5CF6',
-					pink: '#F472B6',
-					orange: '#FB923C'
-				},
-				dark: {
-					primary: '#0A0A0A',
-					secondary: '#1A1A1A',
-					tertiary: '#2A2A2A'
 				}
 			},
 			borderRadius: {
@@ -71,53 +59,17 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
-			keyframes: {
-				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
-				},
-				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
-				},
-				'scan': {
-					'0%': { transform: 'translateY(-100%)' },
-					'100%': { transform: 'translateY(100vh)' }
-				},
-				'pulse-neon': {
-					'0%, 100%': { boxShadow: '0 0 5px #00D4FF, 0 0 20px #00D4FF, 0 0 35px #00D4FF' },
-					'50%': { boxShadow: '0 0 10px #00D4FF, 0 0 40px #00D4FF, 0 0 60px #00D4FF' }
-				},
-				'gradient-shift': {
-					'0%': { backgroundPosition: '0% 50%' },
-					'50%': { backgroundPosition: '100% 50%' },
-					'100%': { backgroundPosition: '0% 50%' }
-				},
-				'float': {
-					'0%, 100%': { transform: 'translateY(0px)' },
-					'50%': { transform: 'translateY(-10px)' }
-				}
+			fontFamily: {
+				sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'sans-serif'],
 			},
-			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out',
-				'scan': 'scan 2s ease-in-out infinite',
-				'pulse-neon': 'pulse-neon 2s ease-in-out infinite',
-				'gradient-shift': 'gradient-shift 3s ease infinite',
-				'float': 'float 3s ease-in-out infinite'
-			},
-			backgroundImage: {
-				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-				'neon-gradient': 'linear-gradient(45deg, #00D4FF, #8B5CF6, #F472B6, #FB923C)'
+			fontSize: {
+				'xs': ['0.75rem', { lineHeight: '1rem' }],
+				'sm': ['0.875rem', { lineHeight: '1.25rem' }],
+				'base': ['1rem', { lineHeight: '1.5rem' }],
+				'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+				'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+				'2xl': ['1.5rem', { lineHeight: '2rem' }],
+				'3xl': ['1.875rem', { lineHeight: '2.25rem' }],
 			}
 		}
 	},
