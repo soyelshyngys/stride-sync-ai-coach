@@ -44,9 +44,9 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
 
   if (step === 'guide') {
     return (
-      <div className="h-full flex flex-col bg-black safe-area-inset">
-        {/* Header */}
-        <div className="flex-shrink-0 flex items-center px-4 py-4 sm:px-6 sm:py-6 border-b border-white/10">
+      <div className="h-screen flex flex-col bg-black">
+        {/* Header - Fixed */}
+        <div className="flex-shrink-0 flex items-center px-4 py-3 sm:px-6 sm:py-4 border-b border-white/10 safe-area-inset">
           <button 
             onClick={onBack} 
             className="p-2 sm:p-3 hover:bg-white/5 rounded-xl transition-colors mr-3 sm:mr-4 touch-manipulation"
@@ -58,9 +58,9 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
           </h1>
         </div>
 
-        {/* Content */}
-        <div className="flex-1 overflow-y-auto px-4 sm:px-6">
-          <div className="py-6 sm:py-8 space-y-8 sm:space-y-12 max-w-2xl mx-auto">
+        {/* Scrollable Content with bottom padding for CTA */}
+        <div className="flex-1 overflow-y-auto pb-24 sm:pb-28">
+          <div className="px-4 sm:px-6 py-6 sm:py-8 space-y-8 sm:space-y-12 max-w-2xl mx-auto">
             {/* Main Guide Section */}
             <div className="text-center">
               <div className="card-minimal p-8 sm:p-12 rounded-2xl sm:rounded-3xl">
@@ -100,8 +100,8 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
           </div>
         </div>
 
-        {/* Fixed Bottom Button */}
-        <div className="flex-shrink-0 p-4 sm:p-6 safe-area-bottom">
+        {/* Fixed Bottom CTA */}
+        <div className="fixed bottom-0 left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-white/10 p-4 sm:p-6 safe-area-bottom">
           <button
             onClick={() => setStep('capture')}
             className="w-full btn-primary text-lg sm:text-xl py-4 sm:py-6 touch-manipulation"
@@ -115,9 +115,9 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
 
   if (step === 'capture') {
     return (
-      <div className="h-full flex flex-col bg-black safe-area-inset">
-        {/* Header */}
-        <div className="flex-shrink-0 flex items-center px-4 py-4 sm:px-6 sm:py-6 border-b border-white/10">
+      <div className="h-screen flex flex-col bg-black">
+        {/* Header - Fixed */}
+        <div className="flex-shrink-0 flex items-center px-4 py-3 sm:px-6 sm:py-4 border-b border-white/10 safe-area-inset">
           <button 
             onClick={() => setStep('guide')} 
             className="p-2 sm:p-3 hover:bg-white/5 rounded-xl transition-colors mr-3 sm:mr-4 touch-manipulation"
@@ -130,7 +130,7 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
         </div>
 
         {/* Content */}
-        <div className="flex-1 flex flex-col justify-center px-4 sm:px-6">
+        <div className="flex-1 flex flex-col justify-center px-4 sm:px-6 pb-24 sm:pb-28">
           <div className="space-y-8 sm:space-y-12 max-w-2xl mx-auto w-full">
             {/* Capture Area */}
             <div className="card-minimal rounded-2xl sm:rounded-3xl p-6 sm:p-12">
@@ -150,26 +150,28 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
                 </div>
               </div>
             </div>
-
-            {/* Upload Button */}
-            <button
-              onClick={() => fileInputRef.current?.click()}
-              className="w-full btn-primary text-lg sm:text-xl py-4 sm:py-6 touch-manipulation"
-            >
-              <div className="flex items-center justify-center space-x-3">
-                <Upload size={20} className="sm:w-6 sm:h-6" />
-                <span>UPLOAD PHOTO</span>
-              </div>
-            </button>
-            
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="hidden"
-            />
           </div>
+          
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="hidden"
+          />
+        </div>
+
+        {/* Fixed Bottom CTA */}
+        <div className="fixed bottom-0 left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-white/10 p-4 sm:p-6 safe-area-bottom">
+          <button
+            onClick={() => fileInputRef.current?.click()}
+            className="w-full btn-primary text-lg sm:text-xl py-4 sm:py-6 touch-manipulation"
+          >
+            <div className="flex items-center justify-center space-x-3">
+              <Upload size={20} className="sm:w-6 sm:h-6" />
+              <span>UPLOAD PHOTO</span>
+            </div>
+          </button>
         </div>
       </div>
     );
@@ -177,7 +179,7 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
 
   if (step === 'analyzing') {
     return (
-      <div className="h-full flex flex-col justify-center items-center bg-black p-4 sm:p-8 safe-area-inset">
+      <div className="h-screen flex flex-col justify-center items-center bg-black p-4 sm:p-8 safe-area-inset">
         <div className="text-center space-y-8 sm:space-y-12 max-w-md mx-auto">
           {/* Image Preview */}
           <div className="relative">
@@ -234,9 +236,9 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
 
   if (step === 'results' && analysis) {
     return (
-      <div className="h-full flex flex-col bg-black safe-area-inset">
-        {/* Header */}
-        <div className="flex-shrink-0 flex items-center px-4 py-4 sm:px-6 sm:py-6 border-b border-white/10">
+      <div className="h-screen flex flex-col bg-black">
+        {/* Header - Fixed */}
+        <div className="flex-shrink-0 flex items-center px-4 py-3 sm:px-6 sm:py-4 border-b border-white/10 safe-area-inset">
           <button 
             onClick={() => setStep('capture')} 
             className="p-2 sm:p-3 hover:bg-white/5 rounded-xl transition-colors mr-3 sm:mr-4 touch-manipulation"
@@ -248,9 +250,9 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
           </h1>
         </div>
 
-        {/* Content */}
-        <div className="flex-1 overflow-y-auto px-4 sm:px-6">
-          <div className="py-6 sm:py-8 space-y-8 sm:space-y-12 max-w-2xl mx-auto">
+        {/* Scrollable Content with bottom padding for CTA */}
+        <div className="flex-1 overflow-y-auto pb-24 sm:pb-28">
+          <div className="px-4 sm:px-6 py-6 sm:py-8 space-y-8 sm:space-y-12 max-w-2xl mx-auto">
             {/* Overall Score */}
             <div className="card-minimal p-8 sm:p-12 rounded-2xl sm:rounded-3xl text-center">
               <div className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-6 sm:mb-8">
@@ -328,8 +330,8 @@ const PostureAnalysisScreen: React.FC<PostureAnalysisScreenProps> = ({ onComplet
           </div>
         </div>
 
-        {/* Fixed Bottom Button */}
-        <div className="flex-shrink-0 p-4 sm:p-6 safe-area-bottom">
+        {/* Fixed Bottom CTA */}
+        <div className="fixed bottom-0 left-0 right-0 bg-black/95 backdrop-blur-sm border-t border-white/10 p-4 sm:p-6 safe-area-bottom">
           <button
             onClick={() => onComplete(analysis)}
             className="w-full btn-primary text-lg sm:text-xl py-4 sm:py-6 touch-manipulation"

@@ -82,12 +82,12 @@ const TemporunApp = () => {
 
       {/* Bottom Navigation */}
       {showBottomNav && (
-        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black border-t border-white/10 safe-area-bottom">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-t border-white/10 safe-area-bottom">
           <div className="px-4 py-3 sm:px-6 sm:py-4">
             <div className="flex items-center justify-around max-w-lg mx-auto">
               <button
                 onClick={() => setCurrentScreen('chat')}
-                className={`flex flex-col items-center space-y-1 p-3 min-w-0 transition-all duration-300 ${
+                className={`flex flex-col items-center space-y-1 p-3 min-w-0 transition-all duration-300 touch-manipulation ${
                   currentScreen === 'chat' 
                     ? 'text-cream transform scale-110' 
                     : 'text-white/40 hover:text-white/70'
@@ -99,7 +99,7 @@ const TemporunApp = () => {
               
               <button
                 onClick={() => setCurrentScreen('posture')}
-                className={`flex flex-col items-center space-y-1 p-3 min-w-0 transition-all duration-300 ${
+                className={`flex flex-col items-center space-y-1 p-3 min-w-0 transition-all duration-300 touch-manipulation ${
                   currentScreen === 'posture' 
                     ? 'text-cream transform scale-110' 
                     : 'text-white/40 hover:text-white/70'
@@ -111,7 +111,7 @@ const TemporunApp = () => {
               
               <button
                 onClick={() => setCurrentScreen('shoes')}
-                className={`flex flex-col items-center space-y-1 p-3 min-w-0 transition-all duration-300 ${
+                className={`flex flex-col items-center space-y-1 p-3 min-w-0 transition-all duration-300 touch-manipulation ${
                   currentScreen === 'shoes' 
                     ? 'text-cream transform scale-110' 
                     : 'text-white/40 hover:text-white/70'
@@ -123,7 +123,7 @@ const TemporunApp = () => {
               
               <button
                 onClick={() => setCurrentScreen('profile')}
-                className={`flex flex-col items-center space-y-1 p-3 min-w-0 transition-all duration-300 ${
+                className={`flex flex-col items-center space-y-1 p-3 min-w-0 transition-all duration-300 touch-manipulation ${
                   currentScreen === 'profile' 
                     ? 'text-cream transform scale-110' 
                     : 'text-white/40 hover:text-white/70'
