@@ -20,6 +20,10 @@ const TemporunApp = () => {
     shoeRecommendations: []
   });
 
+  const handleNavigate = (screen: string) => {
+    setCurrentScreen(screen as Screen);
+  };
+
   const renderScreen = () => {
     switch (currentScreen) {
       case 'onboarding':
@@ -55,12 +59,12 @@ const TemporunApp = () => {
       case 'chat':
         return <CoachChatScreen 
           userData={userData}
-          onNavigate={setCurrentScreen}
+          onNavigate={handleNavigate}
         />;
       case 'profile':
         return <ProfileScreen 
           userData={userData}
-          onNavigate={setCurrentScreen}
+          onNavigate={handleNavigate}
         />;
       default:
         return <OnboardingScreen onComplete={() => setCurrentScreen('posture')} />;
@@ -70,10 +74,9 @@ const TemporunApp = () => {
   const showBottomNav = !['onboarding', 'posture', 'foot', 'shoes'].includes(currentScreen);
 
   return (
-    <div className="min-h-screen bg-dark-primary relative overflow-hidden">
+    <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/5 via-transparent to-neon-purple/5 pointer-events-none" />
-      <div className="absolute top-0 left-0 w-full h-1 bg-neon-gradient animate-gradient-shift" style={{backgroundSize: '400% 400%'}} />
+      <div className="absolute inset-0 bg-white pointer-events-none" />
       
       {/* Main Content */}
       <div className={`relative z-10 ${showBottomNav ? 'pb-20' : ''}`}>
@@ -82,55 +85,55 @@ const TemporunApp = () => {
 
       {/* Bottom Navigation */}
       {showBottomNav && (
-        <div className="fixed bottom-0 left-0 right-0 z-50">
-          <div className="neumorphic mx-4 mb-4 rounded-2xl p-4">
+        <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-100">
+          <div className="mx-4 mb-4 pt-4">
             <div className="flex items-center justify-around">
               <button
                 onClick={() => setCurrentScreen('chat')}
-                className={`flex flex-col items-center space-y-1 p-2 rounded-xl transition-all duration-300 ${
+                className={`flex flex-col items-center space-y-1 p-3 rounded-xl transition-all duration-300 ${
                   currentScreen === 'chat' 
-                    ? 'bg-neon-blue/20 text-neon-blue' 
-                    : 'text-gray-400 hover:text-white'
+                    ? 'bg-black text-white' 
+                    : 'text-gray-600 hover:text-black'
                 }`}
               >
                 <MessageCircle size={24} />
-                <span className="text-xs font-medium">Coach</span>
+                <span className="text-xs font-medium uppercase tracking-wider">Coach</span>
               </button>
               
               <button
                 onClick={() => setCurrentScreen('posture')}
-                className={`flex flex-col items-center space-y-1 p-2 rounded-xl transition-all duration-300 ${
+                className={`flex flex-col items-center space-y-1 p-3 rounded-xl transition-all duration-300 ${
                   currentScreen === 'posture' 
-                    ? 'bg-neon-purple/20 text-neon-purple' 
-                    : 'text-gray-400 hover:text-white'
+                    ? 'bg-black text-white' 
+                    : 'text-gray-600 hover:text-black'
                 }`}
               >
                 <Camera size={24} />
-                <span className="text-xs font-medium">Analyze</span>
+                <span className="text-xs font-medium uppercase tracking-wider">Analyze</span>
               </button>
               
               <button
                 onClick={() => setCurrentScreen('shoes')}
-                className={`flex flex-col items-center space-y-1 p-2 rounded-xl transition-all duration-300 ${
+                className={`flex flex-col items-center space-y-1 p-3 rounded-xl transition-all duration-300 ${
                   currentScreen === 'shoes' 
-                    ? 'bg-neon-orange/20 text-neon-orange' 
-                    : 'text-gray-400 hover:text-white'
+                    ? 'bg-black text-white' 
+                    : 'text-gray-600 hover:text-black'
                 }`}
               >
                 <Target size={24} />
-                <span className="text-xs font-medium">Shoes</span>
+                <span className="text-xs font-medium uppercase tracking-wider">Shoes</span>
               </button>
               
               <button
                 onClick={() => setCurrentScreen('profile')}
-                className={`flex flex-col items-center space-y-1 p-2 rounded-xl transition-all duration-300 ${
+                className={`flex flex-col items-center space-y-1 p-3 rounded-xl transition-all duration-300 ${
                   currentScreen === 'profile' 
-                    ? 'bg-neon-pink/20 text-neon-pink' 
-                    : 'text-gray-400 hover:text-white'
+                    ? 'bg-black text-white' 
+                    : 'text-gray-600 hover:text-black'
                 }`}
               >
                 <User size={24} />
-                <span className="text-xs font-medium">Profile</span>
+                <span className="text-xs font-medium uppercase tracking-wider">Profile</span>
               </button>
             </div>
           </div>
