@@ -33,26 +33,24 @@ Runners often struggle with:
    - Gait pattern recognition
    - Performance metrics tracking
 
-## 🤖 Agent Recipes Implementation
+## 🤖 Agent Implementation
 
-### From https://agentrecipes.com:
+### Multi-Modal Fusion Agent:
+- Combines visual analysis with conversational AI
+- Processes image data and text simultaneously
+- Creates unified user profiles from diverse inputs
 
-1. **Multi-Modal Fusion Agent**:
-   - Combines visual analysis with conversational AI
-   - Processes image data and text simultaneously
-   - Creates unified user profiles from diverse inputs
+### Recommendation Engine Agent:
+- Uses collaborative filtering principles
+- Matches user biomechanics to shoe databases
+- Provides explainable AI recommendations
 
-2. **Recommendation Engine Agent**:
-   - Uses collaborative filtering principles
-   - Matches user biomechanics to shoe databases
-   - Provides explainable AI recommendations
+### Coaching Conversation Agent:
+- Maintains context across chat sessions
+- Adapts responses based on analysis results
+- Provides personalized training guidance
 
-3. **Coaching Conversation Agent**:
-   - Maintains context across chat sessions
-   - Adapts responses based on analysis results
-   - Provides personalized training guidance
-
-## 🛡️ Anthropic Principles Applied
+## 🛡️ AI Safety Principles
 
 ### Helpful:
 - Provides actionable insights for injury prevention
@@ -76,18 +74,15 @@ Runners often struggle with:
 
 ```
 Temporun/
-├── frontend/              # React app with modern UI
-│   ├── screens/          # Main app screens
-│   ├── components/       # Reusable UI components
-│   └── utils/           # Helper functions
-├── backend/              # FastAPI server (to be implemented)
-│   ├── vision/          # Image processing models
-│   ├── nlp/             # Conversation handling
-│   └── recommendations/ # Shoe matching logic
-├── models/               # AI model implementations
-│   ├── posture_analysis/ # Computer vision models
-│   └── foot_classification/ # Foot type detection
-└── assets/              # Test data and resources
+├── src/
+│   ├── components/
+│   │   ├── screens/          # Main app screens
+│   │   └── ui/              # Reusable UI components
+│   ├── hooks/               # Custom React hooks
+│   ├── lib/                 # Utility functions
+│   └── pages/              # Page components
+├── public/                  # Static assets
+└── docs/                   # Documentation
 ```
 
 ## 🎨 UI/UX Design Philosophy
@@ -98,19 +93,35 @@ Temporun/
 - **Progressive disclosure** guiding users through complex analysis
 - **Accessibility-first** design for diverse user needs
 
-## 🚀 Deployment Strategy
+## 🚀 Getting Started
 
-### Frontend (Vercel):
-- Static React build deployment
-- Environment-based configuration
-- Progressive Web App (PWA) capabilities
-- Mobile-responsive design
+### Prerequisites
+- Node.js 18+ or Bun
+- Modern web browser
 
-### Backend (Render):
-- FastAPI server with ML model serving
-- Containerized deployment
-- Auto-scaling based on usage
-- Database integration for user profiles
+### Installation
+```bash
+# Clone the repository
+git clone <repository-url>
+cd temporun
+
+# Install dependencies
+npm install
+# or
+bun install
+
+# Start development server
+npm run dev
+# or
+bun dev
+```
+
+### Build for Production
+```bash
+npm run build
+# or
+bun run build
+```
 
 ## 📱 Key Features
 
@@ -136,10 +147,14 @@ Temporun/
 - **Category**: B2C Multimodal AI Agent
 - **Innovation**: First-of-its-kind running-specific AI coach
 
----
+## 🛠️ Tech Stack
 
-*Built with React, TypeScript, Tailwind CSS, and FastAPI*
-*Powered by Computer Vision and Natural Language Processing*
+- **Frontend**: React 18, TypeScript, Vite
+- **Styling**: Tailwind CSS, Radix UI
+- **State Management**: TanStack Query
+- **Routing**: React Router DOM
+- **Icons**: Lucide React
+- **Charts**: Recharts
 
 ## 📄 License
 
