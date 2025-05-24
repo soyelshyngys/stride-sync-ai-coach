@@ -30,16 +30,16 @@ const CoachChatScreen: React.FC<CoachChatScreenProps> = ({ userData, onNavigate 
   }, [messages]);
 
   const quickActions = [
-    { icon: Camera, text: 'Retake Analysis', action: () => onNavigate('posture') },
-    { icon: Target, text: 'View Shoes', action: () => onNavigate('shoes') },
-    { icon: Zap, text: 'Training Tips', action: () => sendMessage('Give me training tips') }
+    { icon: Camera, text: 'RETAKE ANALYSIS', action: () => onNavigate('posture') },
+    { icon: Target, text: 'VIEW SHOES', action: () => onNavigate('shoes') },
+    { icon: Zap, text: 'TRAINING TIPS', action: () => sendMessage('Give me training tips') }
   ];
 
   const suggestedQuestions = [
-    "How often should I replace my running shoes?",
-    "What exercises can improve my posture?",
-    "How do I prevent running injuries?",
-    "What's the ideal running cadence for me?"
+    "HOW OFTEN SHOULD I REPLACE MY RUNNING SHOES?",
+    "WHAT EXERCISES CAN IMPROVE MY POSTURE?",
+    "HOW DO I PREVENT RUNNING INJURIES?",
+    "WHAT'S THE IDEAL RUNNING CADENCE FOR ME?"
   ];
 
   const sendMessage = async (messageText?: string) => {
@@ -79,65 +79,65 @@ const CoachChatScreen: React.FC<CoachChatScreenProps> = ({ userData, onNavigate 
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen bg-black flex flex-col">
       {/* Header */}
-      <div className="neumorphic mx-4 mt-4 p-4 rounded-2xl">
-        <div className="flex items-center space-x-3">
-          <div className="neumorphic p-3 rounded-full">
-            <Bot size={24} className="text-neon-blue" />
+      <div className="card-minimal mx-6 mt-6 p-6 rounded-3xl">
+        <div className="flex items-center space-x-4">
+          <div className="card-minimal p-4 rounded-2xl">
+            <Bot size={28} className="text-cream" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-white">AI Running Coach</h2>
-            <p className="text-sm text-gray-400">Always here to help optimize your performance</p>
+            <h2 className="text-lg font-bold text-white tracking-wider uppercase">AI RUNNING COACH</h2>
+            <p className="text-sm text-white/50 font-medium tracking-wide uppercase">OPTIMIZING YOUR PERFORMANCE</p>
           </div>
           <div className="ml-auto">
-            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
+            <div className="w-3 h-3 bg-cream rounded-full animate-pulse" />
           </div>
         </div>
       </div>
 
       {/* Quick Actions */}
-      <div className="p-4">
-        <div className="flex space-x-3">
+      <div className="p-6">
+        <div className="flex space-x-4">
           {quickActions.map((action, index) => (
             <button
               key={index}
               onClick={action.action}
-              className="flex items-center space-x-2 neumorphic p-3 rounded-xl hover:bg-dark-tertiary transition-all duration-300"
+              className="flex items-center space-x-2 card-minimal px-4 py-3 rounded-xl hover:bg-white/5 transition-all duration-300"
             >
-              <action.icon size={16} className="text-neon-blue" />
-              <span className="text-xs text-gray-300">{action.text}</span>
+              <action.icon size={16} className="text-cream" />
+              <span className="text-xs text-white/70 font-medium tracking-wider uppercase">{action.text}</span>
             </button>
           ))}
         </div>
       </div>
 
       {/* Messages */}
-      <div className="flex-1 px-4 pb-4 space-y-4 overflow-y-auto">
+      <div className="flex-1 px-6 pb-6 space-y-6 overflow-y-auto">
         {messages.map((message) => (
           <div
             key={message.id}
             className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div
-              className={`max-w-[80%] p-4 rounded-2xl ${
+              className={`max-w-[80%] p-6 rounded-3xl ${
                 message.type === 'user'
-                  ? 'bg-neon-gradient text-white'
-                  : 'neumorphic text-gray-300'
+                  ? 'bg-cream text-black'
+                  : 'card-minimal text-white'
               }`}
             >
-              <div className="flex items-start space-x-2">
+              <div className="flex items-start space-x-3">
                 {message.type === 'bot' && (
-                  <Bot size={16} className="text-neon-blue mt-0.5" />
+                  <Bot size={18} className="text-cream mt-1" />
                 )}
                 <div className="flex-1">
-                  <p className="text-sm leading-relaxed">{message.content}</p>
-                  <span className="text-xs opacity-60 mt-2 block">
+                  <p className="text-sm leading-relaxed font-medium">{message.content}</p>
+                  <span className="text-xs opacity-50 mt-3 block font-medium">
                     {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
                 </div>
                 {message.type === 'user' && (
-                  <User size={16} className="text-white mt-0.5" />
+                  <User size={18} className="text-black mt-1" />
                 )}
               </div>
             </div>
@@ -147,15 +147,15 @@ const CoachChatScreen: React.FC<CoachChatScreenProps> = ({ userData, onNavigate 
         {/* Typing Indicator */}
         {isTyping && (
           <div className="flex justify-start">
-            <div className="neumorphic p-4 rounded-2xl">
-              <div className="flex items-center space-x-2">
-                <Bot size={16} className="text-neon-blue" />
+            <div className="card-minimal p-6 rounded-3xl">
+              <div className="flex items-center space-x-3">
+                <Bot size={18} className="text-cream" />
                 <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-neon-blue rounded-full animate-pulse" />
-                  <div className="w-2 h-2 bg-neon-blue rounded-full animate-pulse delay-75" />
-                  <div className="w-2 h-2 bg-neon-blue rounded-full animate-pulse delay-150" />
+                  <div className="w-2 h-2 bg-cream rounded-full animate-pulse" />
+                  <div className="w-2 h-2 bg-cream rounded-full animate-pulse delay-75" />
+                  <div className="w-2 h-2 bg-cream rounded-full animate-pulse delay-150" />
                 </div>
-                <span className="text-xs text-gray-400">AI is thinking...</span>
+                <span className="text-xs text-white/40 font-medium tracking-wider uppercase">AI IS THINKING...</span>
               </div>
             </div>
           </div>
@@ -163,16 +163,16 @@ const CoachChatScreen: React.FC<CoachChatScreenProps> = ({ userData, onNavigate 
 
         {/* Suggested Questions */}
         {messages.length === 1 && (
-          <div className="space-y-3">
-            <p className="text-center text-sm text-gray-400">Try asking me:</p>
-            <div className="grid grid-cols-1 gap-2">
+          <div className="space-y-4">
+            <p className="text-center text-sm text-white/50 font-medium tracking-widest uppercase">TRY ASKING ME:</p>
+            <div className="grid grid-cols-1 gap-3">
               {suggestedQuestions.map((question, index) => (
                 <button
                   key={index}
                   onClick={() => sendMessage(question)}
-                  className="p-3 neumorphic rounded-xl text-left hover:bg-dark-tertiary transition-all duration-300"
+                  className="p-4 card-minimal rounded-2xl text-left hover:bg-white/5 transition-all duration-300"
                 >
-                  <span className="text-sm text-gray-300">{question}</span>
+                  <span className="text-sm text-white/80 font-medium">{question}</span>
                 </button>
               ))}
             </div>
@@ -183,25 +183,25 @@ const CoachChatScreen: React.FC<CoachChatScreenProps> = ({ userData, onNavigate 
       </div>
 
       {/* Input Area */}
-      <div className="p-4">
-        <div className="neumorphic p-4 rounded-2xl">
-          <div className="flex items-center space-x-3">
+      <div className="p-6">
+        <div className="card-minimal p-6 rounded-3xl">
+          <div className="flex items-center space-x-4">
             <input
               ref={inputRef}
               type="text"
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-              placeholder="Ask me anything about running..."
-              className="flex-1 bg-transparent text-white placeholder-gray-400 outline-none"
+              placeholder="ASK ME ANYTHING ABOUT RUNNING..."
+              className="flex-1 bg-transparent text-white placeholder-white/30 outline-none font-medium tracking-wide uppercase text-sm"
             />
             <button
               onClick={() => sendMessage()}
               disabled={!inputMessage.trim() || isTyping}
-              className={`p-2 rounded-xl transition-all duration-300 ${
+              className={`p-3 rounded-2xl transition-all duration-300 ${
                 inputMessage.trim() && !isTyping
-                  ? 'bg-neon-gradient text-white hover:scale-110'
-                  : 'bg-dark-tertiary text-gray-500 cursor-not-allowed'
+                  ? 'bg-cream text-black hover:scale-110'
+                  : 'bg-white/10 text-white/30 cursor-not-allowed'
               }`}
             >
               <Send size={20} />
