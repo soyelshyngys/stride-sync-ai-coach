@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Star, Heart, ShoppingBag, Zap, Target, Award, Check } from 'lucide-react';
+import { ArrowLeft, Star, Heart, ShoppingBag, Zap, Target, Award, Check, MessageCircle } from 'lucide-react';
 
 interface ShoeRecommendationScreenProps {
   userData: any;
